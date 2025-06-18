@@ -1,0 +1,385 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.navvbar{
+    border: 2px solid black;
+    padding: 30px;
+    background-color: black;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 10;
+}
+.ullist1 ul{
+    list-style-type: none;
+    display: flex;
+    gap: 30px;
+}
+.ullist1 ul a{
+    text-decoration: none;
+    color: white;
+    font-family: 'MetaBookLF-Roman', sans-serif;
+}
+
+.bothul{
+    display: flex;
+}    
+
+.ullist2 ul{
+    list-style-type: none;
+    display: flex;
+    gap: 30px;
+    
+}
+.ullist2 ul a{
+    text-decoration: none;
+    color: white;
+    font-family: 'MetaBookLF-Roman', sans-serif;
+}
+
+.dropd{
+    margin-left: 700px;
+    
+}
+.welcome{
+    margin-top: 0px;
+    margin-left: 30px;
+}
+.welcome h1{
+    font-family: 'Lexend', sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+}
+.welcome h2{
+    font-family: 'Lexend', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+}
+.welcome h3{
+    font-family: 'Lexend', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+}
+.parag{
+    margin-right: 200px;
+}
+
+.landingpage{
+    border: 2px solid white;
+    padding: 30px;
+    background-color: aliceblue;
+    margin-top: 100px;
+}
+.apply button{
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(175, 164, 164);
+}
+.apply button:hover {
+    background-color: #45a049;
+}
+.apply button a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Noto Sans Myanmar', sans-serif;
+    font-weight: bold;                                           
+
+}
+.quick button:hover{
+    background-color: #45a049;
+}
+.userform{
+    margin-top: 0px;
+    margin-left: 400px;
+}
+
+.form-container {
+    background-color: white;
+    padding: 100px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400%;
+    max-width: 600px;
+}
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+/* Label and input styling */
+.label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+
+
+
+.quick button{
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(175, 164, 164);
+}
+
+.quick button a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Noto Sans Myanmar', sans-serif;
+    font-weight: bold;                                           
+
+}
+.thebuttons{
+    display: flex;
+    gap: 20px;
+}
+.carousels{
+    border: 2px solid black;
+    padding: px;
+    background-color: black;
+    margin-top: 50px;
+    margin-left: 0px;
+    margin-right: 0px
+}
+.carousel-item img {
+    height: 600px; /* Adjust height as needed */
+    width: 50%;
+    object-fit: cover; /* Ensures images cover the area uniformly */
+}
+.caro h1{
+    font-size: 40px;
+    font-family: 'Rogan', sans-serif;
+}
+.caro p{
+    font-size: 20px;
+    font-family: 'Rogan', sans-serif;
+    color: whitesmoke;
+}
+.caro button{
+    width: 150px;
+    border-radius: 20px;
+}
+.caro button a{
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    font-family: 'Rogan', sans-serif;
+    
+}
+
+
+.postlanding{
+    border: 2px solid #016a83;
+    padding: 20px;
+    background-color: #016a83;
+}
+.aboutfooter{
+    border: 2px solid silver;
+    padding: 10px;
+    background-color: silver;
+}
+
+.eligib h4{
+    font-size: 40px;
+    color: black;
+    font-family: 'Familjen Grotesk', sans-serif;
+}
+
+.eligib ul li{
+    font-size: 22px;
+    color:black;
+    font-family: 'Noto Sans Symbols', sans-serif;
+}
+
+.firstflex{
+    display: flex;
+    gap: 330px;
+}
+.secondflex{
+    display: flex;
+    gap: 300px;
+    margin-top: 30px;
+}
+.eligib p{
+    font-size: 22px;
+    color: black;
+    font-family: 'Jomolhari', sans-serif;
+}
+.eligib p strong{
+    font-size: 22px;
+    color: black;
+    font-family: 'Jomolhari', sans-serif;
+}
+.eligib a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Jomolhari', sans-serif;
+}
+
+    
+.footer{
+    border: 2px solid black;
+    padding: 50px;
+    background-color: black;
+}
+.parag{
+    font-family: 'Lexend', sans-serif;
+}
+.endword{
+    margin-left: 350px;
+}
+
+.endword h3{
+    color: white;
+    font-family: 'Chivo Mono', sans-serif;
+    font-size: 18px;
+                                                
+}
+
+
+
+
+@media screen and (max-width: 480px){
+
+.navvbar{
+    padding: 20px;
+}  
+.ullist1{
+    margin-left: -20px;
+}
+.ullist1 ul{
+    gap: 10px;
+}
+
+.ullist2{
+    margin-left: 0px;
+   
+}
+.ullist2 ul{
+    gap: 20px;
+}
+.ullist2 li a{
+    font-size: 16px;
+}
+
+
+.dropd{
+    margin-left: -150px;
+    display: none;
+}
+
+.landingpage{
+    margin-top: 85px;
+}
+.welcome{
+    margin-left: -10px;
+    margin-right: 20px;
+}
+.welcome h1{
+    font-family: 'Lexend', sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+
+}
+.parag{
+    font-family: 'Lexend', sans-serif;
+    margin-right: -30px;
+}
+
+
+.userform{
+    margin-left: -100px;
+    
+}
+
+.form-container {
+    background-color: white;
+    padding: 100px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300%;
+    max-width: 520px;
+}
+
+.firstflex{
+    display: block;
+}
+.secondflex{
+    display: block;
+}
+.eligib h4{
+    font-size: 35px;
+}
+.eligib ul li{
+    font-size: 18px;
+}
+.eligib p{
+    font-size: 18px;
+}
+.eligib strong{
+    font-size: 18px;
+}
+.eligib a{
+    font-size: 18px;
+}
+.endword{
+    margin-left: 15px;
+}
+.endword h3{
+    color: white;
+    font-family: 'Chivo Mono', sans-serif;
+    font-size: 14px;
+                                                
+}
+
+.caro h1{
+    font-size: 40px;
+    font-family: 'Rogan', sans-serif;
+}
+.caro p{
+    font-size: 20px;
+    font-family: 'Rogan', sans-serif;
+    color: whitesmoke;
+}
+.caro button{
+    width: 150px;
+    border-radius: 20px;
+}
+.caro button a{
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    font-family: 'Rogan', sans-serif;
+    
+}
+
+}

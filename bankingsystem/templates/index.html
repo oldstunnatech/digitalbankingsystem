@@ -1,0 +1,375 @@
+{% extends 'common_page.html' %}
+
+{% block title %}home{% endblock title %}
+    
+{% block banner %}
+    
+
+{% load static %}
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+        <link href="https://fonts.cdnfonts.com/css/metabooklf-roman" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/noto-sans-symbols" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/lexend" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/jomolhari-2" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/familjen-grotesk" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/rogan" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/noto-sans-myanmar" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/chivo-mono" rel="stylesheet">
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+        <style>
+            .dropd{
+                display: block;
+                margin-right: 10px;
+                
+                
+
+            }
+            .dropdd{
+                margin-right: -40px;
+            }
+
+            .dropdd a{
+                margin-right: -10px;
+                
+            }
+
+            @media (max-width: 480px) {
+                .dropd{
+                  margin-left: -40px;
+                }
+
+                .dropd button{
+                    width: 85px;
+                    font-size: 14px;
+                }
+                .dropdd{
+                    margin-left: -20px;
+                }
+
+                .dropdd a{
+                    width: 85px;
+                    font-size: 14px;
+                }
+                .ullist1{
+                    margin-right: 60px;
+                }
+              }
+                  
+            
+               
+        </style>
+    </head>
+    <body>
+        <main>
+            <div>
+                <div class="navvbar">
+                    <div class="bothul">
+                        <div class="ullist1">
+                            <ul>
+                                <li><a href="{% url 'home' %}">Home</a></li>
+                                <li><a href="{% url 'about' %}">About</a></li>
+                                <li><a href="{% url 'services' %}">Services</a></li>
+                                <li><a href="{% url 'news' %}">News</a></li>
+                            </ul>
+                        </div>
+                        
+                    
+                    
+                
+                        {% if request.user.is_authenticated %}
+                        <div class="dropd">
+                            <div class="dropdown me-3">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{request.user.username}}
+                                </button>
+                                
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{% url 'profile' request.user.id %}">My Profile</a></li>
+                                    {% if request.user.is_superuser %}
+                                    <li><a class="dropdown-item" href="{% url 'all_user' 'staff' %}">Staff</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'all_user' 'customer' %}">Customers</a></li>
+                                    {% elif request.user.is_staff %}
+                                    <li><a class="dropdown-item" href="{% url 'all_user' 'customer' %}">Customers</a></li>
+                                    {% endif %}
+                                    <li><a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="dropdd">
+                            <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                                Features
+                            </a>
+                        
+                              
+                              <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                                <div class="offcanvas-header">
+                                  <h5 class="offcanvas-title" id="offcanvasExampleLabel">Account Features</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                </div>
+                                <div class="offcanvas-body">
+                                  <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                      Click Here
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                      <li><a class="dropdown-item" href="{% url 'new_account' request.user.id %}">New Account</a></li>
+                                      <li><a class="dropdown-item" href="{% url 'my_account' request.user.id %}">My Accounts</a></li>
+                                      <li><a class="dropdown-item" href="{% url 'pin_auth' 'balance' %}">Balance</a></li>
+                                      <li><a class="dropdown-item" href="{% url 'pin_auth' 'deposit' %}">Deposit</a></li>
+                                      <li><a class="dropdown-item" href="{% url 'pin_auth' 'withdraw' %}">Withdraw</a></li>
+                                      <li><a class="dropdown-item" href="{% url 'pin_auth' 'transfer' %}">Transfer</a></li>
+                                      <li><a class="dropdown-item" href="{% url 'pay_bill' request.user.id %}">Pay Bills</a></li>
+                                      <li><a class="dropdown-item" href="{% url 'pin_auth' 'recharge' %}">Recharge Airtime</a></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
+                        
+                        {% else %}
+                        <div class="ullist2">
+                            <ul>
+                                <li><a href="{% url 'login' %}">Login</a></li>
+                                <li><a href="{% url 'signup' %}">SignUp</a></li>
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    
+                </div>
+                {% endblock banner %}
+                
+                <!-- header-->
+
+                
+                {% block body_content %}
+                    
+                
+                <!--landingpage-->
+                <div class="landingpage">
+                    <div class="welcome">
+                        <h1>Welcome to Digital Banking.</h1>
+                        <h2>Digital Banking Made Easy.</h2>
+                        <h3>Banking Made Effortless - Anytime, Anywhere.</h3>
+                        <div class="parag">
+                            <p>Banking Made Effortless - Anytime, Anywhere At digital banking, we're redefining convenience with our secure and user-friendly digital banking platform. Whether you're checking your balance, transferring funds, or paying bills, our digital services are designed to keep you in control—24/7.</p>
+                        </div>
+                        
+                        
+                        {% comment %} <div class="thebuttons">
+                            <div class="apply">
+                                <button><a href="#">Open An Account</a></button>
+                            </div>
+                            
+                            <div class="quick">
+                                <button><a href="">Apply For Loan</a></button>
+                            </div>
+                        </div> {% endcomment %}
+                        
+                        <div class="container-fluid mt-5">
+                            <div id="carouselExampleFade carouselExampleAutoplaying" data-bs-ride="carousel" class="carousel slide carousel-fade">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="{% static '/media/22888800153_020caeec2b_c copy.jpg' %}" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption d-sm-block d-md-block">
+                                            <div class="caro">
+                                                {% if request.user.is_authenticated %}
+                                                <h1>Open a Savings Account</h1>
+                                                <p>Create and Secure your Future Now</p>
+                                                <button><a href="{% url 'new_account' request.user.id %}">Open a Savings Account</a></button>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{% static '/media/35482146945_e8b23da02b_c copy.jpg' %}" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption d-sm-block d-md-block">
+                                            <div class="caro">
+                                                <h1>Open a Current Account</h1>
+                                                <p>Have Access to your money Anytime, Anywhere</p>
+                                                <button><a href="{% url 'new_account' request.user.id %}">Open a Current Account</a></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{% static '/media/38466629086_89ee49bacc_c.jpg' %}" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption d-sm-block d-md-block">
+                                            <div class="caro">
+                                                <h1>Apply For a Loan</h1>
+                                                <p>Get Access to emergency funds</p>
+                                                <button><a href="#">Apply for a Loan</a></button>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                        
+                        <div>
+                            
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                
+                <div class="postlanding">
+                    <div class="userform">
+                        <div class="form-container">
+                            <h2>Open An Account</h2>
+                            <form action="POST"></form>
+                            <!-- <label for="name">First Name</label><input type="text" id="name" name="name" required>
+                                
+                                <label for="name">Last Name</label><input type="text" id="name" name="name" required> -->
+                                
+                                <label for="email">Gender</label>
+                                <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+                                    <option selected></option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                                
+                                
+                                
+                                <label for="email">Married</label>
+                                <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+                                    <option selected></option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                
+                                <label for="name" aria-placeholder="">Dependents (Dependents are either a qualifying child or relative.)</label>
+                                
+                                <select class="form-select form-select-lg mb-3" aria-label="Large select example" aria-placeholder="">
+                                    <option value="" disabled selected>How many dependents do you have?</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3+">3+</option>
+                                </select>
+                                
+                                
+                                <label for="email">Self Employed</label>
+                                <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+                                    <option selected></option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                                
+                                <label for="name">Applicant Income</label><input type="text" id="name" name="name" required>
+                                
+                                <label for="name">Co Applicant Income</label><input type="text" id="name" name="name" required>
+                                
+                                <label for="name">Laon Amount Term</label><input type="text" id="name" name="name" required>
+                                
+                                <label for="name">Credit History</label><input type="text" id="name" name="name" required>
+                                
+                                <label for="email">Property Area</label>
+                                <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+                                    <option selected></option>
+                                    <option value="Urban">Urban</option>
+                                    <option value="Rural">Semiurban</option>
+                                    <option value="Rural">Rural</option>
+                                </select>
+                                
+                                <button type="submit">Submit Application</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="aboutfooter">
+                        <div class="container my-5">
+                            <!-- Eligibility Section -->
+                            <div class="firstflex">
+                                <div class="eligib">
+                                    <h4>Eligibility Criteria</h4>
+                                <ul>
+                                  <li>Must be 18 years or older</li>
+                                  <li>Valid government-issued ID</li>
+                                  <li>Proof of income or employment</li>
+                                  <li>No Minimum Deposit Amount</li>
+                                </ul>
+                                 </div>
+                                
+                              
+                                <!-- Required Documents Section -->
+                                 <div class="eligib">
+                                    <h4>Documents Required</h4>
+                                <ul>
+                                  <li>Government-issued ID (e.g., Passport, Driver's License)</li>
+                                  <li>Proof of Address (e.g., utility bill, bank statement)</li>
+                                  <li>Proof of Income (e.g., pay slips, bank statement)</li>
+                                  <li>National Indentifiation Number (NIN) or Bank Verification Number (BVN)</li>
+                                </ul>
+                                 </div>
+                            </div> 
+                            
+                            
+                          
+                            <!-- Benefits Section -->
+                             <div class="secondflex">
+                                <div class="eligib">
+                                    <h4>Why Banking With Us?</h4>
+                                <ul>
+                                  <li>Competitive interest rates</li>
+                                  <li>No monthly maintenance fees</li>
+                                  <li>24/7 online access to your account</li>
+                                  <li>Free debit card included</li>
+                                </ul>
+                                 </div>
+                                
+                              
+                                <!-- FAQ Section -->
+                                 <div class="eligib">
+                                    <h4>Frequently Asked Questions</h4>
+    
+    
+                                <p><strong>Q:</strong> How long does the application process take?<br>
+                                   <strong>A:</strong> The Application takes five minutes to apply for a new account or a loan</p>
+                                <p><strong>Q:</strong> Can I apply without visiting a branch?<br>
+                                   <strong>A:</strong> Yes, you can complete the process fully online.</p>
+                                 </div>
+                             </div>
+                             
+                            
+                          
+                            <!-- Support Section -->
+                             <div class="eligib">
+                                <h4>Need Help?</h4>
+                            <p>Call us at <strong>+234-9035993262</strong> or email us at 
+                               <a href="#">pelmijosh@gmail.com</a></p>
+                             </div>
+                            
+                          </div>
+                    </div>
+    
+                    
+                    
+                </main>
+                {% endblock body_content %}
+                
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+            </body>
+            </html>
+            

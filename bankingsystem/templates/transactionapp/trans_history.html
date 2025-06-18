@@ -1,0 +1,357 @@
+{% extends 'common_page.html' %}
+{% load bootstrap %}
+
+{% block title %}Transaction History{% endblock %}
+
+{% block body_content %}
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f8f9fa;
+    }
+    .container {
+        max-width: 1100px;
+        margin: 120px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+        margin-bottom: 400px;
+    }
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+    .table-responsive {
+        overflow-x: auto;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    thead {
+        background-color: #343a40;
+        color: #fff;
+    }
+    th, td {
+        text-align: left;
+        padding: 12px;
+        white-space: nowrap;
+        font-size: 14px;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    th {
+        font-weight: bold;
+    }
+    .form-section {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+</style>
+
+<div class="container">
+    <h1>Transaction History</h1>
+
+    <div class="form-section">
+        <form method="post">
+            {% csrf_token %}
+            {{ history_form.as_p }}
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-success">
+            <thead>
+                <tr>
+                    <th>Account Number</th>
+                    <th>Date</th>
+                    <th>Transaction Type</th>
+                    <th>Amount</th>
+                    <th>Recepient Bank Name</th>
+                    <th>Recepient Account Number</th>
+                    <th>Sender Account Number</th>
+                    <th>Sender Bank Name</th>
+                    <th>Account Type</th>
+                    <th>Bill Type</th>
+                    <th>Recepient Phone Number</th>
+                    <th>Mobile Network</th>
+                    <th>phone Number</th>
+                    <th>Bill Transaction Date</th>
+                    <th>Reference</th>
+                    <th>Meter Number</th>
+                    <th>Request Type</th>
+                    <th>Month Of Sub</th>
+                    <th>Decoder Number</th>
+                    <th>Water Supply Number</th>
+                    <th>Electricity Type</th>
+                    <th>Cable Type</th>
+                    <th>Water Bill Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in combined_history %}
+                    <tr>
+                        {% if item.transaction_amount %}
+                        <td>{{ item.account_id }}</td>
+                        <td>{{ item.transaction_date }}</td>
+                        <td>{{ item.transaction_type }}</td>
+                        <td>{{ item.transaction_amount }}</td>
+                        <td>{{ item.recepient_bank_name }}</td>
+                        <td>{{ item.recepient_account_number }}</td>
+                        <td>{{ item.sender_account_number }}</td>
+                        <td>{{ item.sender_bank_name }}</td>
+                        <td>{{ item.account_type_fk }}</td>
+                        <td>{{ item.bill_type }}</td>
+                        <td>{{ item.recepient_phone_number }}</td>
+                        <!-- Fill empty for rest of the columns -->
+                        <td></td><!-- phone Number -->
+                        <td></td><!-- Bill Transaction Date -->
+                        <td></td><!-- Reference -->
+                        <td></td><!-- Meter Number -->
+                        <td></td><!-- Request Type -->
+                        <td></td><!-- Month Of Sub -->
+                        <td></td><!-- Decoder Number -->
+                        <td></td><!-- Water Supply Number -->
+                        <td></td><!-- Electricity Type -->
+                        <td></td><!-- Cable Type -->
+                        <td></td><!-- Water Bill Type -->
+                        <td></td><!-- Water Bill Type -->
+                        {% else %}
+                        <td>{{ item.account_number }}</td>
+                        <td>{{ item.transaction_date }}</td>
+                        <td>{{ item.bill_type }}</td>
+                        <td>{{ item.amount }}</td>
+                        <td>{{ item.recepient_bank_name }}</td>
+                        <td>{{ item.recepient_account_number }}</td>
+                        <td>{{ item.sender_account_number }}</td>
+                        <td>{{ item.sender_bank_name }}</td>
+                        <td>{{ item.account_type_fk }}</td>
+                        <td>{{ item.bill_type }}</td>
+                        <td>{{ item.phone_number }}</td>
+                        <td>{{ item.mobile_networks }}</td>
+                        <td>{{ item.phone_number }}</td>
+                        <td>{{ item.bill_transaction_date }}</td>
+                        <td>{{ item.reference }}</td>
+                        <td>{{ item.meter_number }}</td>
+                        <td>{{ item.request_type }}</td>
+                        <td>{{ item.months_of_sub }}</td>
+                        <td>{{ item.decoder_number }}</td>
+                        <td>{{ item.water_service_number }}</td>
+                        <td>{{ item.electricity_type }}</td>
+                        <td>{{ item.cable_type }}</td>
+                        <td>{{ item.water_bill_type }}</td>
+                        {% endif %}
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="23" class="text-center">No transaction history available.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock body_content %}
+
+
+
+{% comment %} {% extends 'common_page.html' %}
+{% load bootstrap %}
+
+{% block title %}Transaction History{% endblock title %}
+
+{% block body_content %}
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f8f9fa;
+    }
+    .container {
+        max-width: 1100px;
+        margin: 120px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        margin-bottom: 400px;
+    }
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+    .table-responsive {
+        overflow-x: auto;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    thead {
+        background-color: #343a40;
+        color: white;
+    }
+    th, td {
+        text-align: left;
+        padding: 12px;
+        white-space: nowrap;
+        font-size: 14px;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    th {
+        font-weight: bold;
+    }
+    .form-section {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+</style>
+
+<div class="container">
+    <h1>Transaction History</h1>
+
+    <div class="form-section">
+        <form method="post">
+            {% csrf_token %}
+            {{ history_form.as_p }}
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-success">
+            <thead>
+                <tr>
+                    <th>Account Number</th>
+                    <th>Date</th>
+                    <th>Transaction Type</th>
+                    <th>Amount</th>
+                    <th>Recepient Bank Name</th>
+                    <th>Recepient Account Number</th>
+                    <th>Sender Account</th>
+                    <th>Sender Bank Name</th>
+                    <th>Account Type</th>
+                    <th>Bill Type</th>
+                    <th>Recepient Phone Number</th>
+                    <th>Mobile Network</th>
+                    <th>phone Number</th>
+                    <th>Bill Transaction Date</th>
+                    <th>Reference</th>
+                    <th>Meter Number</th>
+                    <th>Request Type</th>
+                    <th>Month Of Sub</th>
+                    <th>Decoder Number</th>
+                    <th>Water Supply Number</th>
+                    <th>Electricity Type</th>
+                    <th>Cable Type</th>
+                    <th>Water Bill Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in combined_history %}
+                    <tr>
+                        {% if item.transaction_amount %}
+                            <td>{{ item.account }}</td>
+                            <td>{{ item.transaction_date }}</td>
+                            <td>{{ item.transaction_type }}</td>
+                            <td>{{ item.transaction_amount }}</td>
+                            <td>{{ item.recepient_bank_name }}</td>
+                            <td>{{ item.recepient_account_number }}</td>
+                            <td>{{ item.sender_account_number }}</td>
+                            <td>{{ item.sender_bank_name }}</td>
+                            <td>{{ item.account_type_fk }}</td>
+                            <td>{{ item.bill_type }}</td>
+                            <td>{{ item.recepient_phone_number }}</td>
+                            <td>{{ item.mobile_networks }}</td>
+                            <!-- Fill empty for rest of the columns -->
+                            <td></td><!-- phone Number -->
+                            <td></td><!-- Bill Transaction Date -->
+                            <td></td><!-- Reference -->
+                            <td></td><!-- Meter Number -->
+                            <td></td><!-- Request Type -->
+                            <td></td><!-- Month Of Sub -->
+                            <td></td><!-- Decoder Number -->
+                            <td></td><!-- Water Supply Number -->
+                            <td></td><!-- Electricity Type -->
+                            <td></td><!-- Cable Type -->
+                            <td></td><!-- Water Bill Type -->
+                        {% elif item.bill_amount %}
+                            <td></td><!-- Account Number -->
+                            <td>{{ item.transaction_date }}</td><!-- Date -->
+                            <td>Bill</td><!-- Transaction Type -->
+                            <td>{{ item.amount }}</td><!-- Amount -->
+                            <td></td><!-- Recepient Bank Name -->
+                            <td></td><!-- Recepient Account Number -->
+                            <td></td><!-- Sender Account -->
+                            <td></td><!-- Sender Bank Name -->
+                            <td></td><!-- Account Type -->
+                            <td>{{ item.bill_type }}</td><!-- Bill Type -->
+                            <td>{{ item.phone_number }}</td><!-- Recepient Phone Number -->
+                            <td></td><!-- Mobile Network -->
+                            <td>{{ item.phone_number }}</td><!-- phone Number -->
+                            <td>{{ item.transaction_date }}</td><!-- Bill Transaction Date -->
+                            <td>{{ item.reference }}</td><!-- Reference -->
+                            <td>{{ item.meter_number }}</td><!-- Meter Number -->
+                            <td>{{ item.request_type }}</td><!-- Request Type -->
+                            <td>{{ item.months_of_sub }}</td><!-- Month Of Sub -->
+                            <td>{{ item.decoder_number }}</td><!-- Decoder Number -->
+                            <td>{{ item.water_service_number }}</td><!-- Water Supply Number -->
+                            <td>{{ item.electricity_type }}</td><!-- Electricity Type -->
+                            <td>{{ item.cable_type }}</td><!-- Cable Type -->
+                            <td>{{ item.water_bill_type }}</td><!-- Water Bill Type -->
+                        {% endif %}
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="23" class="text-center">No transaction history available.</td></tr>
+                {% endfor %}
+            </tbody>
+            
+            {% comment %} <tbody>
+                {% for item in combined_history %}
+                    <tr>
+                        {% if item.transaction_amount %}
+                        <td>{{ item.account }}</td>
+                        <td>{{ item.transaction_date }}</td>
+                        <td>{{ item.transaction_type }}</td>
+                        <td>{{ item.transaction_amount }}</td>
+                        <td>{{ item.recepient_bank_name }}</td>
+                        <td>{{ item.recepient_account_number }}</td>
+                        <td>{{ item.recepient_phone_number }}</td>
+                        <td>{{ item.sender_account_number }}</td>
+                        <td>{{ item.sender_bank_name }}</td>
+                        <td>{{ item.account_type_fk }}</td>
+                        <td>{{ item.bill_type }}</td>
+                        <td>{{ item.mobile_networks }}</td>
+                        {% elif item.bill_amount %}
+                        
+                        <td>{{ item.amount}}</td>
+                        <td>{{ item.bill_type }}</td>
+                        <td>{{ item.phone_number }}</td>
+                        <td>{{ item.transaction_date }}</td>
+                        <td>{{ item.reference }}</td>
+                        <td>{{ item.meter_number }}</td>
+                        <td>{{ item.request_type }}</td>
+                        <td>{{ item.months_of_sub }}</td>
+                        <td>{{ item.decoder_number }}</td>
+                        <td>{{ item.water_service_number }}</td>
+                        <td>{{ item.electricity_type }}</td>
+                        <td>{{ item.cable_type }}</td>
+                        <td>{{ item.water_bill_type }}</td>
+                        {% endif %}
+                    </tr>
+                
+                {% empty %}
+                    <tr><td colspan="13" class="text-center">No transaction history available.</td></tr>
+                {% endfor %}
+            </tbody> {% endcomment %}
+        {% comment %} </table>
+    </div>
+</div>
+{% endblock body_content %}
+
+
+ {% endcomment %}

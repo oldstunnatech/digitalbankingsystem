@@ -1,0 +1,51 @@
+{% extends 'common_page.html' %}
+{% block title %} Select Bills {% endblock title%}
+{% block body_content %}
+
+
+
+<style>
+    .container {
+        max-width: 700px;
+        margin: 100px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        font-family: 'Segoe UI', sans-serif;
+        margin-top: 200px;
+        margin-bottom: 400px;
+    }
+    h2 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+    .field {
+        margin-bottom: 20px;
+    }
+    .label {
+        font-weight: bold;
+        color: #34495e;
+    }
+    .control {
+        font-size: 1.05rem;
+        color: #555;
+    }
+    hr {
+        margin: 1.2rem 0;
+        border-top: 1px solid #ddd;
+    }
+</style>
+<div>
+
+</div>
+<div class="container">
+    <h2>Select Bill Type</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Continue</button>
+    </form>
+</div>
+{% endblock %}

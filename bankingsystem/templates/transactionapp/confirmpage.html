@@ -1,0 +1,275 @@
+{% extends 'common_page.html' %}
+{% load bootstrap %}
+
+{% block title %}Transaction Confirmation{% endblock title %}
+
+{% block body_content %}
+<style>
+    .container {
+        max-width: 750px;
+        margin: 120px auto;
+        background: #fff;
+        padding: 35px;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        font-family: 'Segoe UI', sans-serif;
+    }
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 2rem;
+    }
+    .section {
+        margin-bottom: 25px;
+    }
+    .section-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #007bff;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 5px;
+    }
+    .field {
+        margin-bottom: 15px;
+    }
+    .label {
+        font-weight: bold;
+        color: #34495e;
+    }
+    .control {
+        font-size: 1.05rem;
+        color: #555;
+    }
+    .btn-submit {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 30px;
+        text-decoration: none;
+    }
+    .btn-submit:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="container">
+    <h1>Transaction Confirmation</h1>
+
+    {% if tran_list %}
+        {% for transact in tran_list %}
+            <!-- Sender Info -->
+            <div class="section">
+                <div class="section-title">Sender Information</div>
+                <div class="field">
+                    <label class="label">Name</label>
+                    <div class="control">{{ user_info.user.first_name }} {{ user_info.user.last_name }}</div>
+                </div>
+                <div class="field">
+                    <label class="label">Account Number</label>
+                    <div class="control">{{ user_info.account_number }}</div>
+                </div>
+            </div>
+
+            <!-- Transaction Details -->
+            <div class="section">
+                <div class="section-title">Transaction Details</div>
+                <div class="field">
+                    <label class="label">Type</label>
+                    <div class="control">{{ transact.transaction_type|capfirst }}</div>
+                </div>
+                <div class="field">
+                    <label class="label">Amount</label>
+                    <div class="control">₦{{ transact.amount }}</div>
+                </div>
+                <div class="field">
+                    <label class="label">Date</label>
+                    <div class="control">{{ transaction_time }}</div>
+                </div>
+            </div>
+
+            <!-- Beneficiary Details -->
+            {% if transact.recepient_bank_name or transact.recepient_account_number or transact.recepient_phone_number or transact.bill_type or transact.mobile_networks %}
+                <div class="section">
+                    <div class="section-title">Beneficiary Information</div>
+
+                    {% if transact.recepient_bank_name %}
+                        <div class="field">
+                            <label class="label">Bank Name</label>
+                            <div class="control">{{ transact.recepient_bank_name }}</div>
+                        </div>
+                    {% endif %}
+
+                    {% if transact.recepient_account_number %}
+                        <div class="field">
+                            <label class="label">Account Number</label>
+                            <div class="control">{{ transact.recepient_account_number }}</div>
+                        </div>
+                    {% endif %}
+
+                    {% if transact.bill_type %}
+                        <div class="field">
+                            <label class="label">Bill Type</label>
+                            <div class="control">{{ transact.bill_type }}</div>
+                        </div>
+                    {% endif %}
+
+                    {% if transact.mobile_networks %}
+                        <div class="field">
+                            <label class="label">Mobile Network</label>
+                            <div class="control">{{ transact.mobile_networks }}</div>
+                        </div>
+                    {% endif %}
+
+                    {% if transact.recepient_phone_number %}
+                        <div class="field">
+                            <label class="label">Phone Number</label>
+                            <div class="control">{{ transact.recepient_phone_number }}</div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            <a href="{% url 'submit_transaction' url_tran_list user_info.account_id %}" class="btn-submit">Submit Transaction</a>
+        {% endfor %}
+    {% else %}
+        <p>No transaction details to confirm.</p>
+    {% endif %}
+</div>
+{% endblock body_content %}
+
+
+
+
+{% comment %} {% extends 'common_page.html' %}
+{% load bootstrap %}
+
+{% block title %}Confirmation Page{% endblock title %}
+
+{% block body_content %}
+<style>
+    .container {
+        max-width: 700px;
+        margin: 100px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        font-family: 'Segoe UI', sans-serif;
+        margin-top: 200px;
+    }
+    h1, .card-header-title {
+        text-align: center;
+        color: #2c3e50;
+    }
+    .field {
+        margin-bottom: 20px;
+    }
+    .label {
+        font-weight: bold;
+        color: #34495e;
+    }
+    .control {
+        font-size: 1.05rem;
+        color: #555;
+    }
+    .btn-submit {
+        display: block;
+        width: 100%;
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        text-align: center;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    .btn-submit:hover {
+        background-color: #0056b3;
+        text-decoration: none;
+    }
+    hr {
+        margin: 1.2rem 0;
+        border-top: 1px solid #ddd;
+    }
+</style>
+
+<div class="container">
+    <h1>Transaction Confirmation</h1>
+    {% if tran_list %}
+        {% for transact in tran_list %}
+            <hr>
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control">{{ user_info.user.first_name }} {{ user_info.user.last_name }}</div>
+            </div>
+
+            <div class="field">
+                <label class="label">Account Number</label>
+                <div class="control">{{ user_info.account_number }}</div>
+            </div>
+
+            <div class="field">
+                <label class="label">Transaction Type</label>
+                <div class="control">{{ transact.transaction_type|capfirst }}</div>
+            </div>
+
+            <div class="field">
+                <label class="label">Date</label>
+                <div class="control">{{ transaction_time }}</div>
+            </div>
+
+            <div class="field">
+                <label class="label">Amount</label>
+                <div class="control">₦{{ transact.amount }}</div>
+            </div>
+
+            {% if transact.recepient_bank_name %}
+                <div class="field">
+                    <label class="label">Beneficiary Bank</label>
+                    <div class="control">{{ transact.recepient_bank_name }}</div>
+                </div>
+            {% endif %}
+
+            {% if transact.recepient_account_number %}
+                <div class="field">
+                    <label class="label">Beneficiary Account Number</label>
+                    <div class="control">{{ transact.recepient_account_number }}</div>
+                </div>
+            {% endif %}
+
+            {% if transact.bill_type %}
+                <div class="field">
+                    <label class="label">Bill Type</label>
+                    <div class="control">{{ transact.bill_type }}</div>
+                </div>
+            {% endif %}
+
+            {% if transact.mobile_networks %}
+                <div class="field">
+                    <label class="label">Mobile Network</label>
+                    <div class="control">{{ transact.mobile_networks }}</div>
+                </div>
+            {% endif %}
+
+            {% if transact.recepient_phone_number %}
+                <div class="field">
+                    <label class="label">Phone Number</label>
+                    <div class="control">{{ transact.recepient_phone_number }}</div>
+                </div>
+            {% endif %}
+
+            <hr>
+            <a href="{% url 'submit_transaction' url_tran_list user_info.account_id %}" class="btn-submit">Submit Transaction</a>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock body_content %} {% endcomment %}

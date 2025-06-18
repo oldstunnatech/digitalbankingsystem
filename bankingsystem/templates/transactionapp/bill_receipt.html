@@ -1,0 +1,310 @@
+{% extends 'common_page.html' %}
+
+{% block title %}Receipt Page{% endblock title %}
+
+{% load bootstrap %}
+{% block body_content %}
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 960px;
+        margin: 60px auto;
+        background: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        margin-top: 150px;
+        margin-bottom: 300px;
+    }
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+    p {
+        font-size: 1.1em;
+        line-height: 1.7;
+        color: #444;
+    }
+    .receipt-container {
+        max-width: 700px;
+        background-color: #fff;
+        margin: 30px auto;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .receipt-header {
+        text-align: center;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    .receipt-header h1 {
+        margin: 0;
+        color: #333;
+    }
+    .receipt-header p {
+        color: #777;
+        font-size: 14px;
+    }
+    .receipt-details {
+        line-height: 1.8;
+        color: #333;
+        font-size: 16px;
+    }
+    .receipt-details strong {
+        color: #222;
+    }
+    .reference-box {
+        background-color: #f0f4ff;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-weight: bold;
+        color: #0033cc;
+        text-align: center;
+    }
+    .success-message {
+        font-size: 20px;
+        color: #0a4d00;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .downtext {
+        text-align: center;
+        color: #888;
+        font-size: 12px;
+        border-top: 1px solid #ddd;
+        padding-top: 20px;
+        margin-top: 30px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="receipt-container">
+        <div class="receipt-header">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+            <h1>Transaction Receipt</h1>
+            <p>Secure Online Payment Confirmation</p>
+        </div>
+
+        <div class="reference-box">
+            Reference Number: {{ bill_payment.reference }}
+        </div>
+
+        <div class="success-message">
+            Your transaction was completed successfully
+        </div>
+
+        <div class="receipt-details">
+            <p><strong>Bill Type:</strong> {{ bill_payment.get_bill_type_display }}</p>
+            <p><strong>Amount Paid:</strong> ₦{{ bill_payment.amount }}</p>
+            <p><strong>Date of Payment:</strong> {{ bill_payment.transaction_date }}</p>
+            <p><strong>Phone Number:</strong> {{ bill_payment.phone_number }}</p>
+
+            {% if bill_payment.bill_type == "Electricity" %}
+                <p><strong>Meter Number:</strong> {{ bill_payment.meter_number }}</p>
+                <p><strong>Electricity Type:</strong> {{ bill_payment.get_electricity_type_display }}</p>
+
+            {% elif bill_payment.bill_type == "Cable" %}
+                <p><strong>Cable Type:</strong> {{ bill_payment.get_cable_type_display }}</p>
+                <p><strong>Decoder Number:</strong> {{ bill_payment.decoder_number }}</p>
+                <p><strong>Months of Subscription:</strong> {{ bill_payment.get_months_of_sub_display }}</p>
+                <p><strong>Request Type:</strong> {{ bill_payment.get_request_type_display }}</p>
+
+            {% elif bill_payment.bill_type == "Water" %}
+                <p><strong>Water Service Number:</strong> {{ bill_payment.water_service_number }}</p>
+                <p><strong>Water Bill Type:</strong> {{ bill_payment.get_water_bill_type_display }}</p>
+            {% endif %}
+        </div>
+
+        <div class="downtext">
+            This receipt was generated electronically and does not require a signature.<br>
+            Thank you for using our services.
+        </div>
+    </div>
+</div>
+</body>
+</html>
+{% endblock body_content %}
+
+
+
+{% comment %} {% extends 'common_page.html' %}
+
+{% block title %}Receipt Page{% endblock title %}
+
+{% load bootstrap %}
+{% block body_content %}
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 960px;
+        margin: 60px auto;
+        background: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        margin-top: 170px;
+        margin-bottom: 300px;
+    }
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+    p {
+        font-size: 1.1em;
+        line-height: 1.7;
+        color: #444;
+    }
+    ul {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    li {
+        margin: 8px 0;
+    }
+
+    .receipt-container {
+        max-width: 700px;
+        background-color: #fff;
+        margin: 30px auto;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .receipt-header {
+        text-align: center;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+
+    .receipt-header h1 {
+        margin: 0;
+        color: #333;
+    }
+
+    .receipt-header p {
+        color: #777;
+        font-size: 14px;
+    }
+
+    .receipt-details {
+        line-height: 1.8;
+        color: #333;
+        font-size: 16px;
+    }
+
+    .receipt-details strong {
+        color: #222;
+    }
+
+    .reference-box {
+        background-color: #f0f4ff;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-weight: bold;
+        color: #0033cc;
+        text-align: center;
+    }
+
+    
+
+    .success-message {
+        font-size: 20px;
+        color: #0a4d00;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .downtext{
+        text-align: center;
+        color: #888;
+        font-size: 12px;
+        border-top: 1px solid #ddd;
+        padding-top: 20px;
+        margin-top: 30px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+        <div class="receipt-container">
+            <div class="receipt-header">
+                {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                <h1>Transaction Receipt</h1>
+                <p>Secure Online Payment Confirmation</p>
+            </div>
+    
+            <div class="reference-box">
+                Reference Number: {{ reference }}
+            </div>
+    
+            <div class="success-message">
+                Your transaction was completed successfully
+            </div>
+            <div class="receipt-details">
+                <strong>Bill Type:</strong> {{ bill_payment.get_bill_type_display }}
+                <p><strong>Amount Paid:</strong> ₦{{ bill_payment.amount }}</p>
+                <p><strong>Date of Payment:</strong> {{ bill_payment.transaction_date }}</p>
+                <p><strong>Phone Number:</strong> {{ bill_payment.phone_number }}</p>
+
+                {% if bill_payment.bill_type == "Electricity" %}
+                <p><strong>Meter Number:</strong> {{ bill_payment.meter_number }}</p>
+                <p><strong>Electricity Type:</strong> {{ bill_payment.electricity_type }}</p>
+              
+
+                {% elif bill_payment.bill_type == "Cable" %}
+                <p><strong>Cable Type:</strong> {{ bill_payment.cable_type }}</p>
+                <strong>Decoder Number:</strong> {{ bill_payment.decoder_number }}
+                <p><strong>Months of Sub:</strong> {{bill_payment.get_months_of_sub }}</p>
+                <p><strong>Renewal Request:</strong> {{ bill_payment.get_renewal_request }}</p>
+             
+
+                {% elif bill_payment.bill_type == "Water" %}
+                <p><strong>Water Service Number:</strong> {{ bill_payment.water_service_number }}</p>
+                <p><strong>Water Bill Type:</strong> {{ bill_payment.water_bill_type }}</p>
+                {% endif %}
+
+    
+              
+                
+
+                
+            </div>
+    
+            <div class="downtext">
+                This receipt was generated electronically and does not require a signature.<br>
+                Thank you for using our services.
+            </div>
+        </div>
+</div>
+</body>
+</html>
+{% endblock body_content %}
+
+
+
+
+     {% endcomment %}

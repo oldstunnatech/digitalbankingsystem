@@ -1,0 +1,74 @@
+{% extends 'common_page.html' %}
+
+{% block title %}Login{% endblock title %}
+
+{% load bootstrap %}
+{% block body_content %}
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 960px;
+        margin: 60px auto;
+        background: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        margin-top: 150px;
+        margin-bottom: 300px;
+    }
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+    .news-item {
+        margin-bottom: 35px;
+    }
+    .news-item h2 {
+        margin-bottom: 10px;
+        color: #34495e;
+    }
+    .news-item p {
+        font-size: 1.05em;
+        color: #444;
+        line-height: 1.6;
+    }
+    .news-date {
+        font-size: 0.9em;
+        color: #888;
+        margin-bottom: 5px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5">
+        <div class="way col-md-6 col-lg-6 col-lg-6 col-sm-12 col-xm-12">
+            <h1><span>Sign in here</span></h1>
+            <form method="POST">
+                {% csrf_token %}
+                {% load bootstrap %}
+                {{ form|bootstrap }}
+            
+                <input class="bc-white mt-2 ml-2 longibutton" type="submit" value="Login">
+                
+                <a class="date text-primary mt-5 m1-1 me-3"href="{% url 'password_reset' %}">Forgot password</a>
+
+                
+            </form>
+            
+
+        </div>
+
+    </div>
+</div>
+</div>
+</body>
+</html>
+{% endblock body_content %}
+    

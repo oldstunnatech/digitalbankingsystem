@@ -1,0 +1,84 @@
+{% extends 'common_page.html' %}
+
+{% block title %}news{% endblock title %}
+
+{% block body_content %}
+
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 960px;
+        margin: 60px auto;
+        background: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        margin-top: 150px;
+    }
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+    .news-item {
+        margin-bottom: 35px;
+    }
+    .news-item h2 {
+        margin-bottom: 10px;
+        color: #34495e;
+    }
+    .news-item p {
+        font-size: 1.05em;
+        color: #444;
+        line-height: 1.6;
+    }
+    .news-date {
+        font-size: 0.9em;
+        color: #888;
+        margin-bottom: 5px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Latest News & Updates</h1>
+
+    <div class="news-item">
+        <div class="news-date">April 30, 2025</div>
+        <h2>New Feature: Instant Fund Transfers</h2>
+        <p>
+            We are excited to announce the rollout of instant fund transfers across all verified accounts. This feature enables users to send money in real-time, enhancing the speed and convenience of online banking.
+        </p>
+    </div>
+
+    <div class="news-item">
+        <div class="news-date">March 22, 2025</div>
+        <h2>Security Upgrade Implemented</h2>
+        <p>
+            Our system now uses enhanced two-factor authentication (2FA) to ensure maximum account security. Users are encouraged to activate 2FA for an added layer of protection.
+        </p>
+    </div>
+
+    <div class="news-item">
+        <div class="news-date">February 10, 2025</div>
+        <h2>Mobile Banking Interface Launched</h2>
+        <p>
+            A responsive mobile version of the platform is now available, allowing users to access all core banking features on-the-go from smartphones and tablets.
+        </p>
+    </div>
+
+    <p style="text-align: center; margin-top: 40px;">
+        <strong>Stay informed. Stay secure. Stay ahead with Digital Banking.</strong>
+    </p>
+</div>
+</body>
+</html>
+
+{% endblock body_content %}
+    
+    

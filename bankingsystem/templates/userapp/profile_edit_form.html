@@ -1,0 +1,51 @@
+{% extends 'common_page.html' %}
+
+{% block title %}
+    edit profile page
+{% endblock title %}
+
+{% block body_content %}
+<style>
+    .cont{
+        margin-top: 150px;
+        margin-left: 150px;
+        margin-bottom: 20px;
+    }
+</style>
+    
+<div class="cont">
+    <div class="row">
+        <div>
+            <p>
+                <span>
+                    {% if messages %}
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                {% endif %}
+                </span>
+            </p>
+        </div>
+        <div class="way col-md-6 col-lg-6 col-sm-12 col-xm-12 mt-3 ml-4">
+            <h1><span>Registration</span></h1>
+            <form action="{% url 'edit_profile' user.id %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                {{user_form.as_p}}
+                {{profile_form.as_p}}
+
+                <input class="bc-white mt-2 ms-2 loginbutton" type="submit" value="Submit">
+            </form>
+            {% comment %} <form method="POST" enctype="multipart/form-data">
+                
+
+                
+            </form> {% endcomment %}
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock body_content %}
+    

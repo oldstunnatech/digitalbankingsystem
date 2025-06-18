@@ -1,0 +1,77 @@
+{% extends 'common_page.html' %}
+
+{% block title %}about{% endblock title %}
+
+
+{% block body_content %}
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 960px;
+        margin: 60px auto;
+        background: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        margin-top: 150px;
+    }
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+    .news-item {
+        margin-bottom: 35px;
+    }
+    .news-item h2 {
+        margin-bottom: 10px;
+        color: #34495e;
+    }
+    .news-item p {
+        font-size: 1.05em;
+        color: #444;
+        line-height: 1.6;
+    }
+    .news-date {
+        font-size: 0.9em;
+        color: #888;
+        margin-bottom: 5px;
+    }
+    
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>About Our Digital Banking System</h1>
+    <p>
+        Our <strong>Digital Banking System</strong> is a secure, efficient, and user-friendly platform that enables customers to manage their financial activities online. Designed for modern banking needs, it provides users with instant access to key banking services anytime, anywhere.
+    </p>
+    <p>
+        The system offers a range of functionalities including secure login, balance inquiries, transaction history, fund transfers, and user profile management—all powered by the robust and scalable Django web framework.
+    </p>
+    <p>
+        <strong>Core Features:</strong>
+        <ul>
+            <li>24/7 account access through a secure web interface</li>
+            <li>Real-time fund transfers between accounts</li>
+            <li>Detailed transaction history and statements</li>
+            <li>Multi-user login and role-based access (e.g., admin, customer)</li>
+            <li>Responsive design for desktops, tablets, and smartphones</li>
+        </ul>
+    </p>
+    <p>
+        Our mission is to simplify digital banking through intuitive design, secure systems, and reliable service. Whether you're a personal user or a banking administrator, our platform is designed to meet your needs with ease and confidence.
+    </p>
+    <p style="text-align: center; margin-top: 30px;">
+        <em>Experience the future of banking – safe, simple, and seamless.</em>
+    </p>
+</div>
+</body>
+</html>
+{% endblock body_content %}
+    

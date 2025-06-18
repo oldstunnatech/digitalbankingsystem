@@ -1,0 +1,285 @@
+{% extends 'common_page.html' %}
+{% load bootstrap %}
+{% load humanize %}
+
+{% block title %}Account Balancet{% endblock title %}
+
+{% block body_content %}
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 960px;
+        margin: 60px auto;
+        background: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        margin-top: 150px;
+        margin-bottom: -200px;
+    }
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+    .news-item {
+        margin-bottom: 35px;
+    }
+    .news-item h2 {
+        margin-bottom: 10px;
+        color: #34495e;
+    }
+    .news-item p {
+        font-size: 1.05em;
+        color: #444;
+        line-height: 1.6;
+    }
+    .news-date {
+        font-size: 0.9em;
+        color: #888;
+        margin-bottom: 5px;
+    }
+</style>
+
+<div class="receipt-container">
+    <div class="receipt-header">
+        <h2>Account Balance Page</h2>
+        <p class="text-muted">Here is your Account Balance.</p>
+    </div>
+
+    {% if transaction %}
+        {% for transact in transaction %}
+            <div class="mb-4">
+                <div class="field">
+                    <div class="field-label">Name:</div>
+                    <div class="field-value">
+                        {{ transact.user.first_name }} {{ transact.user.last_name }}
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="field-label">Account Balance:</div>
+                    <div class="field-value text-success">
+                        ₦{{ transact.account_balance|floatformat:2|intcomma }}
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="field-label">Account Type:</div>
+                    <div class="field-value">
+                        {{ transact.account_type }}
+                    </div>
+                </div>
+
+                {% if transact.transaction_type == "transfer" or transact.transaction_type == "pay_bills" %}
+                    <hr>
+                    <div class="field">
+                        <div class="field-label">Beneficiary Bank:</div>
+                        <div class="field-value">
+                            {{ transact.recepient_bank_name }}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if transact.benef_acct %}
+                    <div class="field">
+                        <div class="field-label">Beneficiary Account:</div>
+                        <div class="field-value">
+                            {{ transact.recepient_account_number }}
+                        </div>
+                    </div>
+                {% elif transact.transaction_type == "recharge" %}
+                    <hr>
+                    <div class="field">
+                        <div class="field-label">Beneficiary Number:</div>
+                        <div class="field-value">
+                            {{ transact.recepient_phone_number }}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="field-label">Network Name:</div>
+                        <div class="field-value">
+                            {{ transact.mobile_networks }}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="field-label">Phone Number:</div>
+                        <div class="field-value">
+                            {{ transact.number }}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p class="text-center text-muted">No transaction data available.</p>
+    {% endif %}
+</div>
+{% endblock body_content %}
+
+
+
+
+{% comment %} {% extends 'common_page.html' %}
+
+{% block title %}Transaction Receipt{% endblock title %}
+
+{% load bootstrap %}
+{% load humanize %}
+{% block body_content %}
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 960px;
+        margin: 60px auto;
+        background: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        margin-top: 170px;
+        margin-bottom: 300px;
+    }
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+    p {
+        font-size: 1.1em;
+        line-height: 1.7;
+        color: #444;
+    }
+    ul {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    li {
+        margin: 8px 0;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-3"></div>
+            <div class="col-md-6 col-12 col-offset-3">
+                <p><span class="date text-pink text size-30px mt-0">
+                    
+                </span></p>
+            
+                
+                    <div class="card">
+                        <header class="card-header mt-0">
+                            <p class="card-header-title">
+                                <span class="icon"><i class="mdi mdi-account">Account Balance</i></span>
+                                
+                            </p>
+                        </header>
+                    </div>
+                    {% if transaction %}
+
+                    {% for transact in transaction %}
+                
+
+                        <hr>
+                        <div class="field">
+                            <label class="label"><strong>Name:</strong></label>
+                            <div class="control">
+                                {{ transact.user.first_name }} {{ transact.user.last_name }}
+                            </div>
+                        </div>
+
+                        <hr>
+                        
+
+                        <hr>
+                        <div class="field">
+                            <label class="label"><strong>Balance:</strong></label>
+                            <div class="control">
+                                <p>₦{{ transact.account_balance|floatformat:2|intcomma }}</p>
+                                
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label"><strong>Account Type:</strong></label>
+                            <div class="control">
+                                <p>{{ transact.account_type}}</p>
+                                
+                            </div>
+                        </div>
+
+                        
+                        
+                        {% if transact.transaction_type == "transfer" or transact.transaction_type == "pay_bills" %}
+                            <div class="field">
+                                <label class="label">Beneficiary Bank</label>
+                                <div class="control">
+                                    {{ transact.recepient_bank_name }}
+                                </div>
+                            </div>
+                        <hr>
+                        {% endif %}
+                        {% if transact.benef_acct %}
+                            <div class="field">
+                                <label class="label">Beneficiary Account</label>
+                                <div class="control">
+                                    {{ transact.recepient_account_number }}
+                                </div>
+                            </div>
+                        <hr>
+                
+                        {% elif transact.transaction_type == "recharge" %}
+                            <div class="field">
+                                <label class="label">Beneficiary number</label>
+                                <div class="control">
+                                    {{ transact.recepient_phone_number }}
+                                </div>
+                            </div>
+                        <hr>
+                       
+                        
+                            <div class="field">
+                                <label class="label">Network name</label>
+                                <div class="control">
+                                    {{ transact.mobile_networks }}
+                                </div>
+                            </div>
+                        <hr>
+                      
+                       
+                            <div class="field">
+                                <label class="label">Phone number</label>
+                                <div class="control">
+                                    {{ transact.number }}
+                                </div>
+                            </div>
+                        <hr>
+                        {% endif %}
+                        
+                        
+                        
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+{% endblock body_content %}
+     {% endcomment %}
