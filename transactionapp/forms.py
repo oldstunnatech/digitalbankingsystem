@@ -203,7 +203,6 @@ class PayBills_form(forms. ModelForm):
         ("Water", "Water"),
     ]
 
-    
     meter_number = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Enter Meter Number"}), label="Meter Number",required=False, max_length=13)
     decoder_number = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Enter Decoder Number"}), label="Decoder Number", required=False, max_length=13)
     water_service_number = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Water Service Number"}), label="Water Service Number", required=False, max_length=13)
@@ -259,7 +258,7 @@ class PayBills_form(forms. ModelForm):
         else: 
             if selected_account and not check_password(str(entered_pin), selected_account.account_pin):
                 self.add_error('account_pin', "Invalid PIN entered.")
-        # 💥 Deduct the amount from the user's account balance
+        #  Deduct the amount from the user's account balance
         if selected_account and entered_pin and amount:
             if selected_account.account_balance < amount:
                 self.add_error('amount', "Insufficient account balance.")

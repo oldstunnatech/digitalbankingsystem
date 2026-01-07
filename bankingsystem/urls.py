@@ -33,7 +33,6 @@ urlpatterns = [
     re_path(r'^userapp/', include('userapp.urls')),
     re_path(r'^transactionapp/', include('transactionapp.urls')),
 
-
 ]
 
 
