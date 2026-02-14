@@ -61,22 +61,22 @@
                 
                 
                 {% if action == "transfer" %}
-                    {{ trans_form.beneficiary_bank|crispy:"col-lg-6" }}
-                    {{ trans_form.beneficiary_account|crispy:"col-lg-6" }}
-                    {{ trans_form.amount|crispy:"col-lg-6" }}
+                    {{ trans_form.beneficiary_bank|as_crispy_field }}
+                    {{ trans_form.beneficiary_account|as_crispy_field }}
+                    {{ trans_form.amount|as_crispy_field }}
 
                 {% elif action == "pay_bil" %}
-                    {{ trans_form.bill_type|crispy:"col-lg-6" }}
-                    {{ trans_form.beneficiary_bank|crispy:"col-lg-6" }}
-                    {{ trans_form.beneficiary_account|crispy:"col-lg-6" }}
-                    {{ trans_form.amount|crispy:"col-lg-6" }}
+                    {{ trans_form.bill_type|as_crispy_field }}
+                    {{ trans_form.beneficiary_bank|as_crispy_field }}
+                    {{ trans_form.beneficiary_account|as_crispy_field }}
+                    {{ trans_form.amount|as_crispy_field }}
                 {% elif action == "recharge" %}
-                    {{ trans_form.mobile_networks|crispy:"col-lg-6" }}
-                    {{ trans_form.recepient_phone_number|crispy:"col-lg-6" }}
-                    {{ trans_form.amount|crispy:"col-lg-6" }}
+                    {{ trans_form.mobile_networks|as_crispy_field }}
+                    {{ trans_form.recepient_phone_number|as_crispy_field }}
+                    {{ trans_form.amount|as_crispy_field }}
 
                 {% else %}
-                    {{ trans_form.amount|crispy:"col-lg-6" }}
+                    {{ trans_form.amount|as_crispy_field }}
                 {% endif %}
                     
 
