@@ -1,0 +1,1094 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+.navvbar{
+    border: 2px solid black;
+    padding: 30px;
+    background-color: black;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 10;
+}
+.ullist1 ul{
+    list-style-type: none;
+    display: flex;
+    gap: 30px;
+}
+.ullist1 ul a{
+    text-decoration: none;
+    color: white;
+    font-family: 'MetaBookLF-Roman', sans-serif;
+}
+
+.bothul{
+    display: flex;
+}    
+
+.ullist2 ul{
+    list-style-type: none;
+    display: flex;
+    gap: 30px;
+    
+}
+.ullist2 ul a{
+    text-decoration: none;
+    color: white;
+    font-family: 'MetaBookLF-Roman', sans-serif;
+}
+
+.dropd{
+    margin-left: 600px;
+    
+}
+
+.dropd2{
+    margin-left: 20px;
+    
+}
+.welcome{
+    margin-top: 0px;
+    margin-left: 30px;
+}
+.welcome h1{
+    font-family: 'Lexend', sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+    color: black;
+    margin-left: -20px;
+}
+.welcome h2{
+    font-family: 'Lexend', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    color: black;
+    margin-left: -20px;
+}
+.welcome h3{
+    font-family: 'Lexend', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    color: black;
+    margin-left: -20px;
+}
+.parag{
+    margin-right: 200px;
+    font-style: italic;
+    margin-left: -20px;
+}
+
+.parag p{
+    color: black;
+    
+}
+
+.landingpage{
+    border: 2px solid white;
+    padding: 50px;
+    background-color: white;
+    margin-top: 100px;
+}
+.apply button{
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    background-color: black;
+    margin-right: 30px;
+    
+}
+.apply button:hover {
+    background-color: #45a049;
+}
+.apply button a{
+    text-decoration: none;
+    color: white;
+    font-family: 'Noto Sans Myanmar', sans-serif;
+    font-weight: bold;   
+                                           
+
+}
+.quick button:hover{
+    background-color: #45a049;
+}
+.userform{
+    margin-top: 0px;
+    margin-left: 400px;
+}
+
+.form-container {
+    background-color: white;
+    padding: 100px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400%;
+    max-width: 600px;
+}
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+/* Label and input styling */
+.label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+
+
+
+.quick button{
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(175, 164, 164);
+}
+
+.quick button a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Noto Sans Myanmar', sans-serif;
+    font-weight: bold;                                           
+
+}
+.thebuttons{
+    display: flex;
+    gap: 20px;
+}
+.d-block{
+    object-fit: cover;
+}
+
+.frame{
+
+    padding: 0px;
+    margin-top: -50px;
+    
+    
+}
+
+
+
+
+
+.carousels{
+    border: 2px solid black;
+    padding: px;
+    background-color: white;
+    margin-top: 50px;
+    margin-left: 0px;
+    margin-right: 0px
+}
+.carousel-item img {
+    height: 600px; /* Adjust height as needed */
+    width: 50%;
+    object-fit: cover; /* Ensures images cover the area uniformly */
+}
+.caro h1{
+    font-size: 40px;
+    font-family: 'Rogan', sans-serif;
+    font-weight: bold;
+}
+.caro p{
+    font-size: 25px;
+    font-family: 'Rogan', sans-serif;
+    color: white;
+    
+}
+.caro button{
+    width: 150px;
+    border-radius: 20px;
+}
+.caro button a{
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    font-family: 'Rogan', sans-serif;
+    
+}
+
+
+.postlanding{
+    border: 2px solid #016a83;
+    padding: 20px;
+    background-color: #016a83;
+}
+
+.subheading h1{
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    margin-left: 50px;
+    color: white;
+    margin-right: 300px;
+
+}
+
+.subheadingp{
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    margin-left: 50px;
+    color: white;
+    margin-right: 600px;
+    margin-top: 30px;
+    font-style: italic;
+}
+.gallery{
+    margin-left: 50px;
+    border-radius: 20px;
+    margin-top: 50px;
+}
+.gallery img{
+    border-radius: 20px;
+}
+
+.gallery2 img{
+    margin-left: 950px;
+    margin-top: -550px;
+    border-radius: 20px;
+}
+
+.aboutfooter{
+    border: 2px solid silver;
+    padding: 10px;
+    background-color: silver;
+}
+
+
+.service{
+    margin-left: 50px;
+    margin-top: 20px;
+}
+.service h3{
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    margin-top: 20px;
+    
+}
+.service p{
+    font-family: 'Noto Sans Thaana', sans-serif;
+    font-style: normal;
+    margin-right: 100px;
+    margin-top: 20px;
+    font-size: 16px;
+    
+}
+
+
+
+.service img{
+    border-radius: 20px;
+    margin-left: 80px;
+}
+
+.delays{
+    margin-right: 100px;
+    margin-top: 20px;
+}
+.delays h3{
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    margin-top: 20px;
+}
+
+.delays p{
+    font-family: 'Noto Sans Thaana', sans-serif;
+    font-style: normal;
+    margin-right: 100px;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.delays img{
+    border-radius: 20px;
+    margin-left: 110px;
+}
+.enhances{
+    margin-left: 50px;
+    margin-top: 30px;
+}
+
+.enhances h3{
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    margin-top: 20px;
+    
+}
+
+.enhances p{
+    font-family: 'Noto Sans Thaana', sans-serif;
+    font-style: normal;
+    margin-right: 100px;
+    margin-top: 20px;
+    font-size: 16px;
+    
+}
+
+.enhances img{
+    border-radius: 20px;
+    margin-left: 80px;
+}
+
+.satisfaction{
+    margin-right: -70px;
+    margin-top: 30px;
+}
+
+.satisfaction h3{
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    margin-top: 20px;
+    margin
+}
+
+.satisfaction p{
+    font-family: 'Noto Sans Thaana', sans-serif;
+    font-style: normal;
+    margin-right: 100px;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.satisfaction img{
+    border-radius: 20px;
+    margin-left: 110px;
+    margin-top: 20px;
+}
+
+.financial{
+    margin-left: 50px;
+    margin-top: 30px;
+    margin-right: 100px;
+}
+.financial h3{
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    margin-top: 20px;
+    
+}
+
+.financial p{
+    font-family: 'Noto Sans Thaana', sans-serif;
+    font-style: normal;
+    margin-right: 100px;
+    margin-top: 20px;
+    font-size: 16px;
+    
+}
+
+.financial img{
+    border-radius: 20px;
+    margin-left: 80px;
+}
+
+.strength{
+    margin-right: 150px;
+    margin-top: 30px;
+}
+
+.strength h3{
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    margin-top: 20px;
+    
+}
+
+.strength p{
+    font-family: 'Noto Sans Thaana', sans-serif;
+    font-style: normal;
+    margin-right: 100px;
+    margin-top: 20px;
+    font-size: 16px;
+    
+}
+
+.strength img{
+    border-radius: 20px;
+    margin-left: 80px;
+}
+
+
+
+
+
+
+
+.eligib h4{
+    font-size: 20px;
+    color: black;
+    font-family: 'Familjen Grotesk', sans-serif;
+}
+
+.eligib ul li{
+    font-size: 22px;
+    color:black;
+    
+}
+
+.firstflex{
+    display: flex;
+    gap: 20px;
+}
+.secondflex{
+    display: flex;
+    gap: 300px;
+    margin-top: 30px;
+}
+.eligib p{
+    font-size: 22px;
+    color: black;
+    font-family: 'Jomolhari', sans-serif;
+}
+.eligib p strong{
+    font-size: 22px;
+    color: black;
+    font-family: 'Jomolhari', sans-serif;
+}
+.eligib a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Jomolhari', sans-serif;
+}
+
+    
+.footer{
+    border: 2px solid black;
+    padding: 50px;
+    background-color: black;
+}
+.parag{
+    font-family: 'Lexend', sans-serif;
+}
+.endword{
+    margin-left: 350px;
+}
+
+.endword h3{
+    color: white;
+    font-family: 'Chivo Mono', sans-serif;
+    font-size: 14px;
+    margin-left: 180px;
+
+
+                                                
+}
+
+.endword h4{
+    font-family: 'Chivo Mono', sans-serif;
+    font-size: 14px;
+    color: white;
+    margin-left: 35px;
+    margin-right: 50px;
+
+}
+.endword h5{
+    font-family: 'Chivo Mono', sans-serif;
+    font-size: 14px;
+    color: white;
+    margin-left: 0px;
+}
+.endword h6{
+    font-family: 'Chivo Mono', sans-serif;
+    font-size: 14px;
+    color: white;
+    margin-left: 0px;
+}
+
+
+
+
+@media screen and (max-width: 480px){
+
+.navvbar{
+    padding: 20px;
+}  
+.ullist1{
+    margin-left: -20px;
+}
+.ullist1 ul{
+    gap: 10px;
+}
+
+.ullist2{
+    margin-left: 0px;
+   
+}
+.ullist2 ul{
+    gap: 20px;
+}
+.ullist2 li a{
+    font-size: 16px;
+}
+
+
+.dropd{
+    margin-left: -150px;
+    display: none;
+}
+
+.dropd2{
+    margin-left: 20px;
+    
+}
+.welcome{
+    margin-top: 0px;
+    margin-left: -30px;
+}
+.welcome h1{
+    font-family: 'Lexend', sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    color: black;
+    margin-left: 0px;
+    margin-top: -40px;
+    margin-right: -50px;
+}
+.welcome h2{
+    font-family: 'Lexend', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    color: black;
+    margin-left: 0px;
+}
+.welcome h3{
+    font-family: 'Lexend', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+    margin-left: 0px;
+    margin-top: 15px;
+}
+.parag{
+    margin-right: 0px;
+    font-style: italic;
+    margin-left: 0px;
+}
+
+.parag p{
+    color: black;
+    
+}
+
+.landingpage{
+    border: 2px solid white;
+    padding: 50px;
+    background-color: white;
+    margin-top: 100px;
+}
+.apply button{
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    background-color: black;
+    margin-right: 30px;
+    
+}
+.apply button:hover {
+    background-color: #45a049;
+}
+.apply button a{
+    text-decoration: none;
+    color: white;
+    font-family: 'Noto Sans Myanmar', sans-serif;
+    font-weight: bold;   
+                                           
+
+}
+.quick button:hover{
+    background-color: #45a049;
+}
+.userform{
+    margin-top: 0px;
+    margin-left: 400px;
+}
+
+.form-container {
+    background-color: white;
+    padding: 100px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400%;
+    max-width: 600px;
+}
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+/* Label and input styling */
+.label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+
+
+
+.quick button{
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(175, 164, 164);
+}
+
+.quick button a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Noto Sans Myanmar', sans-serif;
+    font-weight: bold;                                           
+
+}
+.thebuttons{
+    display: flex;
+    gap: 20px;
+}
+.d-block{
+    object-fit: cover;
+}
+
+.frame{
+
+    padding: 0px;
+    margin-top: -50px;
+    
+    
+}
+
+
+
+
+
+.carousels{
+    border: 2px solid black;
+    padding: px;
+    background-color: white;
+    margin-top: 50px;
+    margin-left: 0px;
+    margin-right: 0px
+}
+.carousel-item img {
+    height: 600px; /* Adjust height as needed */
+    width: 50%;
+    object-fit: cover; /* Ensures images cover the area uniformly */
+}
+.caro h1{
+    font-size: 40px;
+    font-family: 'Rogan', sans-serif;
+    font-weight: bold;
+}
+.caro p{
+    font-size: 25px;
+    font-family: 'Rogan', sans-serif;
+    color: white;
+    
+}
+.caro button{
+    width: 150px;
+    border-radius: 20px;
+}
+.caro button a{
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    font-family: 'Rogan', sans-serif;
+    
+}
+
+
+.postlanding{
+    border: 2px solid #016a83;
+    padding: 20px;
+    background-color: #016a83;
+}
+
+
+.subheading h1{
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    margin-left: 5px;
+    color: white;
+    margin-right: 10px;
+
+}
+
+.subheadingp{
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    margin-left:-10px;
+    color: white;
+    margin-right: 40px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.gallery{
+    margin-left: -3000px;
+}
+
+.gallery{
+    margin-left: 0px;
+    border-radius: 20px;
+    
+}
+.gallery img{
+    border-radius: 20px;
+    margin-top:-20px;
+    width: 350px;
+   
+}
+
+.gallery2 img{
+    margin-left: -5px;
+    margin-top: 50px;
+    border-radius: 20px;
+    width: 350px;
+}
+
+
+
+.service{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.service h3{
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    margin-top: 20px;
+    
+}
+.service p{
+    font-family: 'Noto Sans Thaana', sans-serif;
+    font-style: normal;
+    margin-right: 15px;
+    margin-top: 20px;
+    font-size: 16px;
+    
+}
+
+
+
+.service img{
+    border-radius: 20px;
+    margin-left: 10px;
+}
+
+.delays{
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 0px;
+}
+.delays h3{
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    margin-top: 20px;
+}
+
+.delays p{
+    font-family: 'Noto Sans Thaana', sans-serif;
+    font-style: normal;
+    margin-right: 15px;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.delays img{
+    border-radius: 20px;
+    margin-left: 110px;
+    margin-left: 10px;
+}
+
+.enhances{
+    margin-left: 20px;
+    margin-top: 30px;
+    margin-right: 0px;
+}
+
+.enhances h3{
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    margin-top: 20px;
+    margin-right: -10px;
+    
+}
+
+.enhances p{
+    font-family: 'Noto Sans Thaana', sans-serif;
+    font-style: normal;
+    margin-right: 15px;
+    margin-top: 20px;
+    font-size: 16px;
+    
+}
+
+.enhances img{
+    border-radius: 20px;
+    margin-left: 80px;
+    margin-left: 10px;
+}
+
+.satisfaction{
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+.satisfaction h3{
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    margin-top: 20px;
+    
+}
+
+.satisfaction p{
+    font-family: 'Noto Sans Thaana', sans-serif;
+    font-style: normal;
+    margin-top: 20px;
+    font-size: 16px;
+    margin-left: 0px;
+}
+
+.satisfaction img{
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-left: -5px;
+}
+
+.financial{
+    margin-left: 15px;
+    margin-top: 30px;
+    
+}
+.financial h3{
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    margin-top: 20px;
+    margin-left: 0px;
+    margin-right: -100px;
+    
+}
+
+.financial p{
+    font-family: 'Noto Sans Thaana', sans-serif;
+    font-style: normal;
+    margin-right: -70px;
+    margin-top: 20px;
+    font-size: 16px;
+    
+    
+}
+
+.financial img{
+    border-radius: 20px;
+    margin-left: -5px;
+
+}
+
+.strength{
+    margin-top: 30px;
+    margin-left: 15px;
+    margin-right: -50px;
+}
+
+.strength h3{
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    margin-top: 20px;
+    margin-right: -20px;
+    
+}
+
+.strength p{
+    font-family: 'Noto Sans Thaana', sans-serif;
+    font-style: normal;
+    margin-top: 20px;
+    font-size: 16px;
+    margin-left: 0px;
+    margin-right: 50px;
+    
+}
+
+.strength img{
+    border-radius: 20px;
+    margin-left: 2px;
+}
+
+
+
+
+
+
+
+.eligib h4{
+    font-size: 20px;
+    color: black;
+    font-family: 'Familjen Grotesk', sans-serif;
+}
+
+.eligib ul li{
+    font-size: 22px;
+    color:black;
+    
+}
+
+.firstflex{
+    display: block;
+    gap: 20px;
+}
+.secondflex{
+    display: flex;
+    gap: 300px;
+    margin-top: 30px;
+}
+.eligib p{
+    font-size: 22px;
+    color: black;
+    font-family: 'Jomolhari', sans-serif;
+}
+.eligib p strong{
+    font-size: 22px;
+    color: black;
+    font-family: 'Jomolhari', sans-serif;
+}
+.eligib a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Jomolhari', sans-serif;
+}
+
+    
+.footer{
+    border: 2px solid black;
+    padding: 50px;
+    background-color: black;
+}
+.parag{
+    font-family: 'Lexend', sans-serif;
+}
+.endword{
+    margin-left: 0px;
+}
+
+.endword h3{
+    color: white;
+    font-family: 'Chivo Mono', sans-serif;
+    font-size: 12px;
+    margin-left: 25px;
+
+
+                                                
+}
+
+.endword h4{
+    font-family: 'Chivo Mono', sans-serif;
+    font-size: 12px;
+    color: white;
+    margin-left: -20px;
+    margin-right: -35px;
+    margin-top: 30px;
+
+}
+.endword h5{
+    font-family: 'Chivo Mono', sans-serif;
+    font-size: 12px;
+    color: white;
+    margin-left: -30px;
+    margin-right: -45px;
+    margin-top: 30px;
+}
+.endword h6{
+    font-family: 'Chivo Mono', sans-serif;
+    font-size: 12px;
+    color: white;
+    margin-left: -20px;
+    margin-top: 30px;
+    margin-right: -55px;
+}
+
+}
