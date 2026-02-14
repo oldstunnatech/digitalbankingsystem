@@ -2,7 +2,221 @@
 {% load crispy_forms_tags %} 
 {% block title %} User Profile {% endblock title %}
 
+
 {% block body_content %}
+{% load static %}
+
+<style>
+    /* Overall Page Layout */
+    .profile-page-container {
+        padding-top: 50px;
+        min-height: 80vh;
+    }
+    .profile-card-row {
+        max-width: 1200px;
+        margin: 0 auto; /* Center the content */
+    }
+
+    /* 1. Profile Summary Card (Left/Top) */
+    .summary-card {
+        background: #ffffff;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Soft shadow */
+        padding: 20px;
+    }
+
+    .profile-img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        margin-top: -10px;
+        transition: transform 0.3s ease;
+    }
+
+    /* 2. Details Card (Right/Bottom) */
+    .details-card {
+        background: #fdfdfd;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Tab Styling */
+    .card-header-tabs .nav-link {
+        color: #495057;
+        border: none;
+        border-bottom: 3px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .card-header-tabs .nav-link.active {
+        color: #007bff; /* Primary Blue for active tab */
+        background-color: transparent;
+        border-bottom: 3px solid #007bff;
+        font-weight: 600;
+    }
+
+    /* Detail Field Styling */
+    .detail-field {
+        padding: 10px 0;
+        border-bottom: 1px dashed #eee; /* Dashed line separator */
+    }
+
+    .detail-field:last-child {
+        border-bottom: none;
+    }
+
+    .detail-label {
+        font-size: 0.95rem;
+        color: #6c757d !important; /* Muted grey for labels */
+    }
+
+    .detail-value {
+        font-weight: 500;
+        color: #343a40; /* Darker text for values */
+    }
+</style>
+
+{% if my_profile %}
+    {% for profile in my_profile %}
+    <div class="container-fluid profile-page-container">
+
+        {% if messages %}
+            <div class="row pt-4">
+                <div class="col-12">
+                    {% for message in messages %}
+                        <div class="alert alert-info">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="row mt-5 mb-5 profile-card-row">
+            
+            <div class="col-lg-4 col-md-12 mb-4">
+                <div class="card shadow-lg h-100 summary-card">
+                    <div class="card-body text-center">
+                        
+                        {% if profile.profile_passport %}
+                            <img src="{{ profile.profile_passport.url }}" alt="{{ profile.user.username }}" class="profile-img rounded-circle mb-3 border border-3 border-primary" height="150" width="150">
+                        {% else %}
+                            <img src="https://avatars.dicebear.com/v2/initials/{{ profile.user.username }}.svg" alt="{{ profile.user.username }}" class="profile-img rounded-circle mb-3 border border-3 border-primary" height="150" width="150">
+                        {% endif %}
+
+                        <h4 class="card-title font-weight-bold">{{ profile.user.first_name }} {{profile.middle_name}} {{ profile.user.last_name }}</h4>
+                        <p class="text-muted">{{ profile.user.username }}</p>
+                        
+                        <span class="badge bg-secondary mb-3">
+                            {% if profile.staff == 1 %}
+                                Staff Account
+                            {% else %}
+                                Customer Account
+                            {% endif %}
+                        </span>
+
+                        {% if request.user.is_superuser or staff %}
+
+
+                        <a href="{% url 'deactivate_profile' profile.user_id %}" class="btn {% if profile.user.is_active %}btn-outline-danger{% else %}btn-outline-success{% endif %}">
+                                    {% if profile.user.is_active == 1 %}
+                                        Deactivate Account
+                                    {% else %}
+                                        Activate Account
+                                    {% endif %}
+                        </a>
+
+
+                        <div class="d-grid gap-2">
+                            <a href="{% url 'edit_profile' profile.user_id %}" class="btn btn-primary btn-lg mt-3">
+                                Edit Profile
+                            </a>
+                        </div>
+
+                        {% else %}
+                        <div class="d-grid gap-2">
+                            <a href="{% url 'edit_profile' profile.user_id %}" class="btn btn-primary btn-lg mt-3">
+                                Edit Profile
+                            </a>
+                        </div>
+
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8 col-md-12">
+                <div class="card shadow-lg h-100 details-card">
+                    <div class="card-header bg-light">
+                        <ul class="nav nav-tabs card-header-tabs" id="profileTabs" role="tablist">
+                            <li class="nav-item">
+                                <button class="nav-link active" id="personal-tab" data-bs-toggle="tab" data-bs-target="#personal" type="button" role="tab" aria-controls="personal" aria-selected="true">Personal Info</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact & Address</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" id="identity-tab" data-bs-toggle="tab" data-bs-target="#identity" type="button" role="tab" aria-controls="identity" aria-selected="false">Identity & KYC</button>
+                            </li>
+                            {% if profile.staff == 1 %}
+                            <li class="nav-item">
+                                <button class="nav-link" id="staff-tab" data-bs-toggle="tab" data-bs-target="#staff" type="button" role="tab" aria-controls="staff" aria-selected="false">Staff Details</button>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+
+                    <div class="card-body tab-content" id="profileTabsContent">
+
+                        <div class="tab-pane fade show active" id="personal" role="tabpanel" aria-labelledby="personal-tab">
+                            <h5 class="mb-4 text-primary">Basic Information</h5>
+                            
+                            <div class="row detail-field mb-3"><div class="col-sm-4 text-muted detail-label"><strong class="text-secondary">Date of Birth:</strong></div><div class="col-sm-8 detail-value">{{ profile.date_of_birth }}</div></div>
+                            <div class="row detail-field mb-3"><div class="col-sm-4 text-muted detail-label"><strong class="text-secondary">Sex:</strong></div><div class="col-sm-8 detail-value">{{ profile.sex }}</div></div>
+                            <div class="row detail-field mb-3"><div class="col-sm-4 text-muted detail-label"><strong class="text-secondary">Marital Status:</strong></div><div class="col-sm-8 detail-value">{{ profile.marital_status }}</div></div>
+                            <div class="row detail-field mb-3"><div class="col-sm-4 text-muted detail-label"><strong class="text-secondary">Occupation:</strong></div><div class="col-sm-8 detail-value">{{ profile.occupation }}</div></div>
+                        </div>
+
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            <h5 class="mb-4 text-primary">Contact & Location</h5>
+                            <div class="row detail-field mb-3"><div class="col-sm-4 text-muted detail-label"><strong class="text-secondary">E-mail:</strong></div><div class="col-sm-8 detail-value">{{ profile.email }}</div></div>
+                            <div class="row detail-field mb-3"><div class="col-sm-4 text-muted detail-label"><strong class="text-secondary">Phone Number:</strong></div><div class="col-sm-8 detail-value">{{ profile.phone_number }}</div></div>
+                            <div class="row detail-field mb-3"><div class="col-sm-4 text-muted detail-label"><strong class="text-secondary">Nationality:</strong></div><div class="col-sm-8 detail-value">{{ profile.nationality }}</div></div>
+                            <div class="row detail-field mb-3"><div class="col-sm-4 text-muted detail-label"><strong class="text-secondary">State / City:</strong></div><div class="col-sm-8 detail-value">{{ profile.state }} / {{ profile.city }}</div></div>
+                            <div class="row detail-field mb-3"><div class="col-sm-4 text-muted detail-label"><strong class="text-secondary">Residencial Address:</strong></div><div class="col-sm-8 detail-value">{{ profile.address }}</div></div>
+                        </div>
+
+                        <div class="tab-pane fade" id="identity" role="tabpanel" aria-labelledby="identity-tab">
+                            <h5 class="mb-4 text-primary">Verification Details (KYC)</h5>
+                            <div class="row detail-field mb-3"><div class="col-sm-4 text-muted detail-label"><strong class="text-secondary">BVN:</strong></div><div class="col-sm-8 detail-value">{{ profile.BVN }}</div></div>
+                            <div class="row detail-field mb-3"><div class="col-sm-4 text-muted detail-label"><strong class="text-secondary">NIN:</strong></div><div class="col-sm-8 detail-value">{{ profile.NIN }}</div></div>
+                            {% if profile.means_of_identity %}
+                                <div class="row detail-field mb-3"><div class="col-sm-4 text-muted detail-label"><strong class="text-secondary">Means of Identity:</strong></div><div class="col-sm-8 detail-value">{{ profile.means_of_identity }}</div></div>
+                            {% endif %}
+                            {% if profile.electricity_bills %}
+                                <div class="row detail-field mb-3"><div class="col-sm-4 text-muted detail-label"><strong class="text-secondary">Electricity Bills:</strong></div><div class="col-sm-8 detail-value">{{ profile.electricity_bills }}</div></div>
+                            {% endif %}
+                        </div>
+
+                        {% if profile.staff == 1 %}
+                        <div class="tab-pane fade" id="staff" role="tabpanel" aria-labelledby="staff-tab">
+                            <h5 class="mb-4 text-primary">Staff Information</h5>
+                            <div class="row detail-field mb-3"><div class="col-sm-4 text-muted detail-label"><strong class="text-secondary">Position:</strong></div><div class="col-sm-8 detail-value">{{ profile.position }}</div></div>
+                            <div class="row detail-field mb-3"><div class="col-sm-4 text-muted detail-label"><strong class="text-secondary">Status:</strong></div><div class="col-sm-8 detail-value">{{ profile.user_status }}</div></div>
+                            <div class="row detail-field mb-3"><div class="col-sm-4 text-muted detail-label"><strong class="text-secondary">Staff ID:</strong></div><div class="col-sm-8 detail-value">{{ profile.user.username }}</div></div>
+                        </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endif %}
+{% endblock body_content %}
+
+{% comment %} {% block body_content %}
 <style>
     .row{
         margin-top: 150px;
@@ -91,7 +305,7 @@
                         <div class="field">
                             <label class="label">Date of Birth:</label>
                             <div class="control">
-                                {{ profile.date_of_birth }}
+                                {{ profile.date_of_birthprofile.date_of_birth }}
                             </div>
                         </div>
 
@@ -247,4 +461,4 @@
         </div>
     </div>
 </div>
-{% endblock body_content %}
+{% endblock body_content %} {% endcomment %}
