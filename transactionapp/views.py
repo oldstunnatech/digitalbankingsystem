@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Account_table, Transaction_table, Bill_payment
+from .models import account_table, Transaction_table, Bill_payment
 from .forms import Account_Open_form, Change_pin_form, PinAuthentication_form, TransactionHistory_form, Transaction_form, PayBills_form, BillTypeForm
 from django.http import HttpResponsePermanentRedirect, HttpResponseRedirect
 import random
@@ -10,7 +10,7 @@ from userapp.models import Profile
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.conf import settings
-from transactionapp.models import Account_table
+from transactionapp.models import account_table
 from django.utils import timezone
 from django.db.models import F
 from django.db import transaction
@@ -75,7 +75,7 @@ def newAccount(request, userId):
             account = "77"+str(random.randint(00000000, 99999999))
             add_user.account_number=account
             add_user.save()
-            my_account = Account_table.objects.all().filter(user_id=userId)
+            my_account = account_table.objects.all().filter(user_id=userId)
             messages.success(request, ("Your account was successfully created. Thank you!"))
             return render(request, "transactionapp/display_account.html", {"my_account":my_account})
         else:
@@ -88,7 +88,7 @@ def newAccount(request, userId):
 
 @login_required
 def displayAccount(request, userId):
-    my_account = Account_table.objects.all().filter(user_id=userId)
+    my_account = account_table.objects.all().filter(user_id=userId)
     return render(request, "transactionapp/display_account.html", {"my_account":my_account})
     
 
@@ -102,8 +102,8 @@ def changePin(request, acctId):
             confirm_pin = pin_form.cleaned_data["newpin2"]
 
             try:
-                user_account = Account_table.objects.get(account_id=acctId)
-            except Account_table.DoesNotExist:
+                user_account = account_table.objects.get(account_id=acctId)
+            except account_table.DoesNotExist:
                 messages.error(request, "Account not found.")
                 return HttpResponseRedirect(reverse('change_pin', args=(acctId,)))
 
@@ -127,7 +127,7 @@ def changePin(request, acctId):
 @login_required
 def resetPin(request, acctId, userId):
     try:
-        account = Account_table.objects.get(account_id=acctId)
+        account = account_table.objects.get(account_id=acctId)
         account.account_pin = make_password("0000")  # ✅ Hash the reset PIN
         account.save(update_fields=["account_pin"])  # Save securely
         messages.success(request, "PIN has been reset to default.")
@@ -138,7 +138,7 @@ def resetPin(request, acctId, userId):
         [account.user.email], #To email (Receiver)
         fail_silently=False, #Handle any erro
         )
-    except Account_table.DoesNotExist:
+    except account_table.DoesNotExist:
         messages.error(request, "Account not found.")
     return HttpResponsePermanentRedirect(reverse("my_account", args=(userId,)))
     
@@ -153,7 +153,7 @@ def resetPin(request, acctId, userId):
 @login_required
 def pinAuthentication(request, action):
     account_list = [("", "Select account number"),]
-    account_num = Account_table.objects.filter(user_id=request.user.id).values()
+    account_num = account_table.objects.filter(user_id=request.user.id).values()
     for account in account_num:
         account_list.append((account["account_number"], account["account_number"]))
 
@@ -165,13 +165,13 @@ def pinAuthentication(request, action):
             entered_pin = pin_form.cleaned_data["account_pin"]
         
             try:
-                user_account = Account_table.objects.get(account_number=acct_number)
+                user_account = account_table.objects.get(account_number=acct_number)
                 if check_password(entered_pin, user_account.account_pin):
                     return HttpResponsePermanentRedirect(reverse('transaction', args = (user_account.account_id, action) ))
                 else:
                     messages.error(request, "Invalid PIN entered.")
                 
-            except Account_table.DoesNotExist:
+            except account_table.DoesNotExist:
                 messages.error(request, "Account not found.")
         else:
             messages.error(request, "Please correct the form errors below.")
@@ -185,7 +185,7 @@ def pinAuthentication(request, action):
 @login_required
 def userTransaction(request, acctId, action):
     if action == "balance":
-        balance = Account_table.objects.filter(account_id=acctId)
+        balance = account_table.objects.filter(account_id=acctId)
         return render(request, "transactionapp/balance_page.html", {"transaction":balance})
 
     if request.method == "POST":
@@ -193,7 +193,7 @@ def userTransaction(request, acctId, action):
         tran_list = {}
         
         try:
-            user_info = Account_table.objects.get(account_id = acctId)
+            user_info = account_table.objects.get(account_id = acctId)
         except Exception as e:
             messages.error(request, (f"Account Verification Failed: {e}"))
             return HttpResponsePermanentRedirect(reverse('transaction', args=(acctId, action) ))
@@ -258,7 +258,7 @@ def submitTransaction(request, tran_list, acctId):
     
     with transaction.atomic():
         try:
-            account = Account_table.objects.get(account_id=acctId)
+            account = account_table.objects.get(account_id=acctId)
             balance = account.account_balance
         except Exception as e:
             messages.error(request, f"Failed to process account balance: {e}")
@@ -268,7 +268,7 @@ def submitTransaction(request, tran_list, acctId):
         transaction_type = tran_list.get("transaction_type")
 
         if transaction_type == "deposit":
-            Account_table.objects.filter(user_id=request.user.id, account_id=acctId).update(account_balance=F("account_balance") + amount)
+            account_table.objects.filter(user_id=request.user.id, account_id=acctId).update(account_balance=F("account_balance") + amount)
             transact = Transaction_table(
                 user_id=request.user.id,
                 account_id=acctId,
@@ -282,7 +282,7 @@ def submitTransaction(request, tran_list, acctId):
                 return redirect(reverse('transaction', args=(acctId, transaction_type)))
             
             if transaction_type == "transfer":
-                Account_table.objects.filter(user_id=request.user.id, account_id=acctId).update(account_balance=F("account_balance") - amount)
+                account_table.objects.filter(user_id=request.user.id, account_id=acctId).update(account_balance=F("account_balance") - amount)
                 transact = Transaction_table(
                     user_id=request.user.id,
                     account_id=acctId,
@@ -294,7 +294,7 @@ def submitTransaction(request, tran_list, acctId):
                 )
 
             elif transaction_type == "pay_bill":
-                Account_table.objects.filter(user_id=request.user.id, account_id=acctId).update(account_balance=F("account_balance") - amount)
+                account_table.objects.filter(user_id=request.user.id, account_id=acctId).update(account_balance=F("account_balance") - amount)
                 transact = Transaction_table(
                     user_id=request.user.id,
                     account_id=acctId,
@@ -306,7 +306,7 @@ def submitTransaction(request, tran_list, acctId):
                 )
 
             elif transaction_type == "recharge":
-                Account_table.objects.filter(user_id=request.user.id, account_id=acctId).update(account_balance=F("account_balance")- amount)
+                account_table.objects.filter(user_id=request.user.id, account_id=acctId).update(account_balance=F("account_balance")- amount)
                 transact = Transaction_table(
                     user_id=request.user.id,
                     account_id=acctId,
@@ -317,7 +317,7 @@ def submitTransaction(request, tran_list, acctId):
                 )
 
             else:
-                Account_table.objects.filter(user_id=request.user.id, account_id=acctId).update(account_balance=F("account_balance") - amount)
+                account_table.objects.filter(user_id=request.user.id, account_id=acctId).update(account_balance=F("account_balance") - amount)
                 transact = Transaction_table(
                     user_id=request.user.id,
                     account_id=acctId,
@@ -437,7 +437,7 @@ def payBillsView(request, bill_type):
             amount = Decimal(form.cleaned_data.get('amount'))
 
             try:
-                account = Account_table.objects.get(account_number = account_number)
+                account = account_table.objects.get(account_number = account_number)
 
                 if not check_password(entered_pin,account.account_pin):
                     form.add_error("account_pin", "Incorrect PIN entered.")
@@ -445,7 +445,7 @@ def payBillsView(request, bill_type):
 
                 
 
-            except Account_table.DoesNotExist:
+            except account_table.DoesNotExist:
                 messages.error(request, "Account not found.")
                 return render(request, "transactionapp/pay_bill.html", {"form": form, "bill_type": bill_type})
             
@@ -504,7 +504,7 @@ def payBillsView(request, bill_type):
 @login_required
 def get_account_details(request):
     account_number = request.GET.get('account_number')
-    account = Account_table.objects.filter(account_number=account_number, user=request.user).first()
+    account = account_table.objects.filter(account_number=account_number, user=request.user).first()
 
     if account:
         data = {

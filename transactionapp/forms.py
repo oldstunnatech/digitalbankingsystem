@@ -1,5 +1,5 @@
 from django import forms
-from .models import Account_table, Bill_payment, Transaction_table
+from .models import account_table, Bill_payment, Transaction_table
 from django.contrib.auth.hashers import check_password 
 from django.contrib.auth.hashers import make_password
 from django.utils.timezone import now
@@ -11,7 +11,7 @@ class Account_Open_form(forms. ModelForm):
     account_pin = forms.CharField(widget=forms.PasswordInput(attrs={"placeholder": "Enter four digits"}), label="Create PIN", max_length=4)
     account_pin_confirm = forms.CharField(widget=forms.PasswordInput(attrs={"placeholder": "Confirm four digits"}), label="Confirm PIN",  max_length=4)
     class Meta:
-        model = Account_table
+        model = account_table
         fields =[
             "account_type",
             "account_pin",
@@ -86,7 +86,7 @@ class GeneralChoices(forms.Form):
     def get_account(request):
         account_list = [("", "Select your account number")]
         # account_number = Account_table.objects.filter(user=user).values()
-        account_number = Account_table.objects.all().values()  
+        account_number = account_table.objects.all().values()  
         for account in account_number:
             account_list.append((account["account_number"], account["account_number"])) 
         return account_list
@@ -94,13 +94,21 @@ class GeneralChoices(forms.Form):
 
 class Transaction_form(forms.Form):
     param = GeneralChoices()
-    your_account = forms.ChoiceField(choices=param.get_account(), label="", required=False)
     beneficiary_account = forms.CharField(label="Beneficiary Account Number", required=False, max_length=10)
     beneficiary_bank = forms.ChoiceField(choices=param.bank_name, label="", required=False)
     bill_type = forms.ChoiceField(choices=param.bill_choices, label="", required=False)
     amount = forms.IntegerField(widget=forms.TextInput(attrs={"placeholder": "Amount"}), label="")
     recepient_phone_number = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Number"}), label="", required=False, max_length=11)
     mobile_networks = forms.ChoiceField(choices=param.network_choices, label="", required=False)
+    your_account = forms.ChoiceField(label="", required=False)  # empty placeholder
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Now query the database safely
+        accounts = account_table.objects.all()
+        choices = [(a.account_number, f"{a.account_number} - {a.account_type}") for a in accounts]
+        self.fields['your_account'].choices = choices
+
 
 # class Transaction_form(forms.ModelForm):
 #     class Meta:
@@ -215,7 +223,7 @@ class PayBills_form(forms. ModelForm):
     
 
     paramm = GeneralChoices()
-    account_number = forms.ModelChoiceField(queryset=Account_table.objects.all(), to_field_name='account_number')
+    account_number = forms.ModelChoiceField(queryset=account_table.objects.all(), to_field_name='account_number')
     account_type = forms.CharField(required=False,widget=forms.TextInput(attrs={'readonly': 'readonly', 'class': 'form-control'}),label='Account Type')
     account_balance = forms.CharField(required=False,widget=forms.TextInput(attrs={'readonly': 'readonly', 'class': 'form-control'}),label='Account Balance')
     # account_number = forms.ChoiceField(choices=paramm.get_account() or [], label="", required=False)
@@ -230,7 +238,7 @@ class PayBills_form(forms. ModelForm):
         self.bill_type = bill_type
 
         if user:
-            self.fields['account_number'].queryset = Account_table.objects.filter(user=user)
+            self.fields['account_number'].queryset = account_table.objects.filter(user=user)
             # Optionally remove the blank label '--------'
             # self.fields['account_number'].empty_label = None
 

@@ -4,7 +4,7 @@ from django.contrib.auth.hashers import make_password
 
 # Create your models here.
 
-class Account_table(models.Model):
+class account_table(models.Model):
     acc_type = [
         ("Savings", "Savings"),
         ("Current", "Current"),
@@ -39,7 +39,7 @@ class Account_table(models.Model):
     def save(self, *args, **kwargs):
         if self.pk:
             # Existing account: check if PIN changed
-            old_pin = Account_table.objects.get(pk=self.pk).account_pin
+            old_pin = account_table.objects.get(pk=self.pk).account_pin
             if self.account_pin != old_pin and not self.account_pin.startswith('pbkdf2_'):
                 self.account_pin = make_password(self.account_pin)
         else:
@@ -51,10 +51,7 @@ class Account_table(models.Model):
 
         
     def __str__(self):
-        return f"{self.account_number}"
-        return f"{self.account_type}"
-        return f"₦{self.account_balance}"
-
+        return f"{self.account_number} - {self.account_type} - ₦{self.account_balance}"
 
 
     
@@ -103,7 +100,7 @@ class Bill_payment(models.Model):
         ("Lagos Inc", "Lagos Inc"),
     ]
 
-    account_number = models.ForeignKey(Account_table, on_delete=models.CASCADE, related_name='bill_payments_by_account', null=True)
+    account_number = models.ForeignKey(account_table, on_delete=models.CASCADE, related_name='bill_payments_by_account', null=True)
     account_type = models.CharField(max_length=20, unique=False, null=True)
     account_balance = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
     bill_type = models.CharField(max_length=20, choices=BILL_TYPE_CHOICES, null=False)
@@ -125,9 +122,7 @@ class Bill_payment(models.Model):
     
 
     def __str__(self):
-        return f"{self.account_number}" # return account number field on form
-        return f"{self.account_type}"
-        return f"₦{self.account_balance}"
+        return f"{self.account_number} - {self.account_type} - ₦{self.account_balance}"
 
 
 class Transaction_table(models.Model):
@@ -148,9 +143,9 @@ class Transaction_table(models.Model):
     ] 
 
     transaction_id = models.AutoField(primary_key=True)
-    account_type_fk = models.ForeignKey(Account_table, on_delete=models.CASCADE, related_name='transaction_account_type', null=True)
+    account_type_fk = models.ForeignKey(account_table, on_delete=models.CASCADE, related_name='transaction_account_type', null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    account = models.ForeignKey(Account_table, on_delete=models.CASCADE)
+    account = models.ForeignKey(account_table, on_delete=models.CASCADE)
     transaction_type = models.CharField(unique=False, max_length=20)
     transaction_date = models.DateTimeField(auto_now_add=True)
     transaction_amount = models.BigIntegerField(unique=False)
@@ -158,13 +153,12 @@ class Transaction_table(models.Model):
     recepient_bank_name = models.CharField(max_length=20, null=True)
     recepient_account_number = models.CharField(max_length=10, null=True)
     sender_bank_name = models.CharField(max_length=10, null=True)
-    sender_account_number = models.ForeignKey(Account_table, related_name='sender', on_delete=models.CASCADE, unique=False, null=True)
+    sender_account_number = models.ForeignKey(account_table, related_name='sender', on_delete=models.CASCADE, unique=False, null=True)
     bill_type = models.ForeignKey(Bill_payment, on_delete=models.CASCADE, related_name='transaction_bill_type', null=True)
     mobile_networks = models.CharField(choices=networks, max_length=20, null=True)
 
 
     def __str__(self):
-        return f"{self.reference} - {self.transaction_type} - ₦{self.amount} by {self.user.username}"
-
+        return f"{self.recepient_account_number} - {self.bill_type} - ₦{self.transaction_amount}"
 
 
