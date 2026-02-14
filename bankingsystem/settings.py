@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-&_q!f(bp4s8$py9@a0mxcm+qi8&+33)*6j17&-7w%v56j-322z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["https://digitalbankingsystem.onrender.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["digitalbankingsystem.onrender.com", "localhost", "127.0.0.1"]
 
 
 # Application definition
