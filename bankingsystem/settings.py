@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+# from whitenoise import WhiteNoise
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -84,16 +85,31 @@ WSGI_APPLICATION = "bankingsystem.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "bankingsytem_db",
+#         "USER": "root",
+#         "PASSWORD": "OldStunna27!",
+#         "HOST": "localhost",
+#         "PORT": "3306",
+#         "OPTIONS": {
+#             "autocommit": True,
+#         },
+
+#     }
+# }
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "bankingsytem_db",
-        "USER": "root",
-        "PASSWORD": "OldStunna27!",
-        "HOST": "localhost",
-        "PORT": "3306",
-        "OPTIONS": {
-            "autocommit": True,
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'digitalbankingsystem_db',  # Your database name on Render
+        'USER': 'digitalbankingsystem_db_user',
+        'PASSWORD': 'LxEdADhWGO1QUiB5dMHU1s84BxZCDBUn',
+        'HOST': 'dpg-d68cna4r85hc73cql3f0-a.oregon-postgres.render.com',
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'require',
         },
 
     }
