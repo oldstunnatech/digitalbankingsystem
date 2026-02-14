@@ -61,22 +61,22 @@
                 
                 
                 {% if action == "transfer" %}
-                    {{ trans_form.beneficiary_bank|bootstrap_horizontal:"col-lg-6" }}
-                    {{ trans_form.beneficiary_account|bootstrap_horizontal:"col-lg-6" }}
-                    {{ trans_form.amount|bootstrap_horizontal:"col-lg-6" }}
+                    {{ trans_form.beneficiary_bank|crispy:"col-lg-6" }}
+                    {{ trans_form.beneficiary_account|crispy:"col-lg-6" }}
+                    {{ trans_form.amount|crispy:"col-lg-6" }}
 
                 {% elif action == "pay_bil" %}
-                    {{ trans_form.bill_type|bootstrap_horizontal:"col-lg-6" }}
-                    {{ trans_form.beneficiary_bank|bootstrap_horizontal:"col-lg-6" }}
-                    {{ trans_form.beneficiary_account|bootstrap_horizontal:"col-lg-6" }}
-                    {{ trans_form.amount|bootstrap_horizontal:"col-lg-6" }}
+                    {{ trans_form.bill_type|crispy:"col-lg-6" }}
+                    {{ trans_form.beneficiary_bank|crispy:"col-lg-6" }}
+                    {{ trans_form.beneficiary_account|crispy:"col-lg-6" }}
+                    {{ trans_form.amount|crispy:"col-lg-6" }}
                 {% elif action == "recharge" %}
-                    {{ trans_form.mobile_networks|bootstrap_horizontal:"col-lg-6" }}
-                    {{ trans_form.recepient_phone_number|bootstrap_horizontal:"col-lg-6" }}
-                    {{ trans_form.amount|bootstrap_horizontal:"col-lg-6" }}
+                    {{ trans_form.mobile_networks|crispy:"col-lg-6" }}
+                    {{ trans_form.recepient_phone_number|crispy:"col-lg-6" }}
+                    {{ trans_form.amount|crispy:"col-lg-6" }}
 
                 {% else %}
-                    {{ trans_form.amount|bootstrap_horizontal:"col-lg-6" }}
+                    {{ trans_form.amount|crispy:"col-lg-6" }}
                 {% endif %}
                     
 
