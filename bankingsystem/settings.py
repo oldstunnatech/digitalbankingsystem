@@ -25,7 +25,7 @@ PROJECT_DIR =os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = "django-insecure-&_q!f(bp4s8$py9@a0mxcm+qi8&+33)*6j17&-7w%v56j-322z"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["digitalbankingsystem.onrender.com", "localhost", "127.0.0.1"]
 
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -54,8 +55,10 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-     "whitenoise.middleware.WhiteNoiseMiddleware",
+     
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = "bankingsystem.urls"
 
@@ -138,7 +141,7 @@ AUTH_PASSWORD_VALIDATORS = [
 #EMAIL Backend configuration
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
