@@ -7,90 +7,126 @@
 
 {% load static %}
 
+<style>
+    .gallery2{
+        margin-top: 100px;
+    }
+
+    .dropd1{
+        display: block;
+       
+        
+        
+        
+    }
+    .drop{
+        display: flex;
+        gap: 20px;
+        margin-left: 750px;
+    }
+
+    .dropd1 button{
+        
+        font-size: 14px;
+    }
+
+    .dropd2{
+        
+    }
+    @media (max-width: 480px) {
+                .dropd1{
+                    display: block;
+                    
+                }
+                
+                .drop{
+                    display: block;
+                    gap: 0px;
+                    margin-left: 25px;
+                }
+
+                .dropd1 button{
+                    font-size: 12px;
+                    
+                    
+                      
+                }
+
+                .dropd2{
+                    margin-left: 0px;
+                    margin-top: 5px;
+                }
+
+                .dropd2 a{
+                    width: 85px;
+                    font-size: 12px;
+                    
+                }
+
+                .welcome h1{
+                    margin-top: 100px;
+                }
+                
+                
+              }
+</style>
 
 
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="{% static 'style.css' %}">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-        <link href="https://fonts.cdnfonts.com/css/metabooklf-roman" rel="stylesheet">
-        <link href="https://fonts.cdnfonts.com/css/noto-sans-symbols" rel="stylesheet">
-        <link href="https://fonts.cdnfonts.com/css/lexend" rel="stylesheet">
-        <link href="https://fonts.cdnfonts.com/css/jomolhari-2" rel="stylesheet">
-        <link href="https://fonts.cdnfonts.com/css/familjen-grotesk" rel="stylesheet">
-        <link href="https://fonts.cdnfonts.com/css/rogan" rel="stylesheet">
-        <link href="https://fonts.cdnfonts.com/css/noto-sans-myanmar" rel="stylesheet">
-        <link href="https://fonts.cdnfonts.com/css/chivo-mono" rel="stylesheet">
-        
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-        <style>
-            .dropd{
-                display: block;
-                margin-right: 10px;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link href="https://fonts.cdnfonts.com/css/metabooklf-roman" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/noto-sans-symbols" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/lexend" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/jomolhari-2" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/familjen-grotesk" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/rogan" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/noto-sans-myanmar" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/chivo-mono" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inconsolata:wght@200..900&family=Lexend+Deca:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.cdnfonts.com/css/noto-sans-thaana" rel="stylesheet">
+
                 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <main>
+        <div>
+            <div class="navvbar">
+                <div class="bothul">
+                    <div class="ullist1">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'about' %}">About</a></li>
+                            <li><a href="{% url 'services' %}">Services</a></li>
+                            <li><a href="{% url 'news' %}">News</a></li>
+                        </ul>
+                    </div>
+    
                 
+                    {% if request.user.is_authenticated %}
+                    <div class="drop">
 
-            }
-            .dropdd{
-                margin-right: -40px;
-            }
-
-            .dropdd a{
-                margin-right: -10px;
-                
-            }
-
-            @media (max-width: 480px) {
-                .dropd{
-                  margin-left: -40px;
-                }
-
-                .dropd button{
-                    width: 85px;
-                    font-size: 14px;
-                }
-                .dropdd{
-                    margin-left: -20px;
-                }
-
-                .dropdd a{
-                    width: 85px;
-                    font-size: 14px;
-                }
-                .ullist1{
-                    margin-right: 60px;
-                }
-              }
-                  
-            
-               
-        </style>
-    </head>
-    <body>
-        <main>
-            <div>
-                <div class="navvbar">
-                    <div class="bothul">
-                        <div class="ullist1">
-                            <ul>
-                                <li><a href="{% url 'home' %}">Home</a></li>
-                                <li><a href="{% url 'about' %}">About</a></li>
-                                <li><a href="{% url 'services' %}">Services</a></li>
-                                <li><a href="{% url 'news' %}">News</a></li>
-                            </ul>
-                        </div>
-                        
-                    
-                    
-                
-                        {% if request.user.is_authenticated %}
-                        <div class="dropd">
+                        <div class="dropd1">
                             <div class="dropdown me-3">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     {{request.user.username}}
@@ -110,9 +146,9 @@
                             </div>
                         </div>
 
-                        <div class="dropdd">
+                    <div class="dropd2">
                             <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                                Features
+                                Transactions
                             </a>
                         
                               
@@ -139,237 +175,377 @@
                                   </div>
                                 </div>
                               </div>
-                        </div>
-                        
-                        {% else %}
-                        <div class="ullist2">
-                            <ul>
-                                <li><a href="{% url 'login' %}">Login</a></li>
-                                <li><a href="{% url 'signup' %}">SignUp</a></li>
-                            </ul>
-                        </div>
-                        {% endif %}
+                            </div>
+
+
                     </div>
-
                     
-                </div>
-                {% endblock banner %}
-                
-                <!-- header-->
+                            
 
+                            {% else %}
+                            <div class="ullist2">
+                                <ul>
+                                    <li><a href="{% url 'login' %}">Login</a></li>
+                                    <li><a href="{% url 'signup' %}">SignUp</a></li>
+                                </ul>
+                            </div>
+                            {% endif %}
                 
-                {% block body_content %}
-                    
+                        </div>
                 
-                <!--landingpage-->
+            </div>
+
+            {% endblock banner %}
+
+
+             {% block body_content %}
+
+             <!-- header-->
+               <!--landingpage-->
                 <div class="landingpage">
                     <div class="welcome">
-                        <h1>Welcome to Digital Banking.</h1>
-                        <h2>Digital Banking Made Easy.</h2>
+                        <h1>Secure and Intuitive Digital Banking Platform</h1>
+                        <h2>Digital Banking System</h2>
                         <h3>Banking Made Effortless - Anytime, Anywhere.</h3>
                         <div class="parag">
-                            <p>Banking Made Effortless - Anytime, Anywhere At digital banking, we're redefining convenience with our secure and user-friendly digital banking platform. Whether you're checking your balance, transferring funds, or paying bills, our digital services are designed to keep you in control—24/7.</p>
+                            <p>Designed to be Friendly, ensuring Accessibility for people across all Socio Economic and Educational Backgrounds</p>
                         </div>
-                        
-                        
-                        {% comment %} <div class="thebuttons">
+
+                        {% if not user.is_authenticated %}
+                        <div class="thebuttons">
                             <div class="apply">
-                                <button><a href="#">Open An Account</a></button>
+                                <button><a href="{% url 'login' %}">Open An Account</a></button>
                             </div>
-                            
-                            <div class="quick">
+    
+                            <!-- <div class="quick">
                                 <button><a href="">Apply For Loan</a></button>
-                            </div>
-                        </div> {% endcomment %}
-                        
-                        <div class="container-fluid mt-5">
-                            <div id="carouselExampleFade carouselExampleAutoplaying" data-bs-ride="carousel" class="carousel slide carousel-fade">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="{% static '/media/22888800153_020caeec2b_c copy.jpg' %}" class="d-block w-100" alt="...">
-                                        <div class="carousel-caption d-sm-block d-md-block">
-                                            <div class="caro">
-                                                {% if request.user.is_authenticated %}
-                                                <h1>Open a Savings Account</h1>
-                                                <p>Create and Secure your Future Now</p>
-                                                <button><a href="{% url 'new_account' request.user.id %}">Open a Savings Account</a></button>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="{% static '/media/35482146945_e8b23da02b_c copy.jpg' %}" class="d-block w-100" alt="...">
-                                        <div class="carousel-caption d-sm-block d-md-block">
-                                            <div class="caro">
-                                                <h1>Open a Current Account</h1>
-                                                <p>Have Access to your money Anytime, Anywhere</p>
-                                                <button><a href="{% url 'new_account' request.user.id %}">Open a Current Account</a></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="{% static '/media/38466629086_89ee49bacc_c.jpg' %}" class="d-block w-100" alt="...">
-                                        <div class="carousel-caption d-sm-block d-md-block">
-                                            <div class="caro">
-                                                <h1>Apply For a Loan</h1>
-                                                <p>Get Access to emergency funds</p>
-                                                <button><a href="#">Apply for a Loan</a></button>
-                                            </div>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
+                            </div> -->
                         </div>
-                        
+                        {% endif %}
+                       
+                       </div>
+
                         
                         <div>
-                            
+
                         </div>
                         
                         
                     </div>
                     
                 </div>
-                
+
+                <div class="frame">
+                         <div class="container-fluid mt-5">
+                            <div id="carouselExampleFade carouselExampleAutoplaying" data-bs-ride="carousel" class="carousel slide carousel-fade"> 
+                                <div class="carousel-inner">
+                                  <div class="carousel-item active">
+                                    <img src="{% static '/media/leslin_liu-building-4743180_1280.jpg' %}" class="d-block w-100" alt="...">
+                                    <div class="carousel-caption d-sm-block d-md-block">
+                                        <div class="caro">
+                                           {% if not user.is_authenticated %} 
+                                            <h1>Open an Account</h1>
+                                        <p>Start banking in minutes</p>
+                                        <button><a href="{% url 'signup' %}">Join Today</a></button>
+                                            {% endif %}
+                                        </div>
+                                      </div>
+                                    
+                                  </div>
+                                  <div class="carousel-item">
+                                    <img src="{% static '/media/qgadrian-architecture-8254661_1280.jpg' %}" class="d-block w-100" alt="...">
+                                    <div class="carousel-caption d-sm-block d-md-block">
+                                        <div class="caro">
+                                        {% if not user.is_authenticated %}
+                                            <h1>Get Started</h1>
+                                        <p>Start banking in minutes</p>
+                                        <button><a href="{% url 'signup' %}">Join Today</a></button>
+                                        {% endif %}
+                                        </div>
+                                      </div>
+                                  </div>
+                                  <div class="carousel-item">
+                                    <img src="{% static '/media/qgadrian-building-8248483_1280.jpg' %}" class="d-block w-100" alt="...">
+                                    <div class="carousel-caption d-sm-block d-md-block">
+                                        <div class="caro">
+                                        {% if not user.is_authenticated %} 
+                                            <h1>Start Your Account</h1>
+                                        <p>Start banking in minutes</p>
+                                        <button><a href="{% url 'signup' %}">Join Today</a></button>
+                                        {% endif %}
+                                        </div>
+                                      </div>
+                                  </div>
+                                </div>
+                                
+                              </div>
+                        </div>
+
                 <div class="postlanding">
-                    <div class="userform">
+
+                    <!-- <div class="userform">
                         <div class="form-container">
                             <h2>Open An Account</h2>
                             <form action="POST"></form>
-                            <!-- <label for="name">First Name</label><input type="text" id="name" name="name" required>
-                                
-                                <label for="name">Last Name</label><input type="text" id="name" name="name" required> -->
-                                
-                                <label for="email">Gender</label>
-                                <select class="form-select form-select-lg mb-3" aria-label="Large select example">
-                                    <option selected></option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                                
-                                
-                                
-                                <label for="email">Married</label>
-                                <select class="form-select form-select-lg mb-3" aria-label="Large select example">
-                                    <option selected></option>
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                </select>
-                                
-                                <label for="name" aria-placeholder="">Dependents (Dependents are either a qualifying child or relative.)</label>
-                                
-                                <select class="form-select form-select-lg mb-3" aria-label="Large select example" aria-placeholder="">
-                                    <option value="" disabled selected>How many dependents do you have?</option>
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3+">3+</option>
-                                </select>
-                                
-                                
-                                <label for="email">Self Employed</label>
-                                <select class="form-select form-select-lg mb-3" aria-label="Large select example">
-                                    <option selected></option>
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                </select>
-                                
-                                <label for="name">Applicant Income</label><input type="text" id="name" name="name" required>
-                                
-                                <label for="name">Co Applicant Income</label><input type="text" id="name" name="name" required>
-                                
-                                <label for="name">Laon Amount Term</label><input type="text" id="name" name="name" required>
-                                
-                                <label for="name">Credit History</label><input type="text" id="name" name="name" required>
-                                
-                                <label for="email">Property Area</label>
-                                <select class="form-select form-select-lg mb-3" aria-label="Large select example">
-                                    <option selected></option>
-                                    <option value="Urban">Urban</option>
-                                    <option value="Rural">Semiurban</option>
-                                    <option value="Rural">Rural</option>
-                                </select>
-                                
-                                <button type="submit">Submit Application</button>
-                            </div>
+                            <label for="name">First Name</label><input type="text" id="name" name="name" required>
+
+                            <label for="name">Last Name</label><input type="text" id="name" name="name" required>
+
+                            <label for="email">Gender</label>
+                            <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+                                <option selected></option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                              </select>
+                            
+                            
+
+                            <label for="email">Married</label>
+                            <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+                                <option selected></option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                              </select>
+
+                              <label for="name" aria-placeholder="">Dependents (Dependents are either a qualifying child or relative.)</label>
+                        
+                              <select class="form-select form-select-lg mb-3" aria-label="Large select example" aria-placeholder="">
+                                <option value="" disabled selected>How many dependents do you have?</option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3+">3+</option>
+                              </select>
+
+
+                              <label for="email">Self Employed</label>
+                            <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+                                <option selected></option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                              </select>
+
+                              <label for="name">Applicant Income</label><input type="text" id="name" name="name" required>
+
+                              <label for="name">Co Applicant Income</label><input type="text" id="name" name="name" required>
+
+                              <label for="name">Laon Amount Term</label><input type="text" id="name" name="name" required>
+
+                              <label for="name">Credit History</label><input type="text" id="name" name="name" required>
+
+                              <label for="email">Property Area</label>
+                            <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+                                <option selected></option>
+                                <option value="Urban">Urban</option>
+                                <option value="Rural">Semiurban</option>
+                                <option value="Rural">Rural</option>
+                              </select>
+                            
+                            <button type="submit">Submit Application</button>
+                        </div>
+                    </div> -->
+
+                    <div class="subheading">
+                        <h1>Fund your Account, Make Transfers, Pay Bills</h1>
+                    </div>
+
+                    <div class="subheadingp">
+                        <p>Live life on your own terms! Add money to your account and transfer to other bank accounts for free. Enjoy easy and convenience transaction, track your history, deposit funds and fast bill payments at no extra charge.</p>
+                    </div>
+
+                    <div class="gallery">
+                        <img src="{% static 'media/cartoon-money-payment-mobile-bank-electronic-transaction-transfer-money-via-online-mobile-app-illustration-people-send-and-receive-money-online-vector.jpg' %}" alt="" width="500px">
+                    </div>
+
+                    <div class="gallery2">
+                        <img src="{% static 'media/original-e26f5d6f87a6544b1f04364357527286.gif' %}" alt="" width="500px">
+                    </div>
+
+
+
+                </div>
+                
+                <div class="aboutfooter">
+                    <div class="firstflex">
+
+                        <div class="service">
+                            <h3>Improving Service Delivery</h3>
+                            <p>Improving service delivery in digital banking ensures faster, secure, and more reliable financial services for customers. By leveraging modern technology and automation, digital banking platforms simplify transactions, reduce waiting time, and provide seamless access to banking services anytime, anywhere. This approach enhances customer satisfaction while ensuring convenience, efficiency, and trust.</p>
+                            
+
+                            <img src="{% static '/media/thedigitalartist-customer-service-1641724_1280.jpg' %}" alt="" width="300px">
+                        </div>
+
+                        <div class="delays">
+                            <h3>Reducing delays in Financial Transactions</h3>
+                            <p>Experience faster, safer, and more reliable banking like never before. Our digital platform uses cutting-edge technology and smart automation to simplify transactions, reduce waiting times, and give you seamless access to your finances anytime, anywhere. Enjoy unmatched convenience, efficiency, and trust—because banking should be effortless.</p>
+                            
+
+                            <img src="{% static '/media/geralt-online-banking-4287719_1280.jpg' %}" alt="" width="300px">
+                        </div>
+                    </div>
+            
+
+
+
+                    <div class="firstflex">
+
+                        <div class="enhances">
+                            <h3>Enhancing Customer Experience</h3>
+                            <p>Delivering an exceptional customer experience means making every interaction smooth, intuitive, and satisfying. By leveraging technology, personalization, and efficient processes, businesses can meet customer needs faster, build trust, and create lasting loyalty. A focus on experience ensures convenience, reliability, and meaningful engagement at every touchpoint.</p>
+                            
+
+                            <img src="{% static '/media/mohamed_hassan-feedback-8784556_1280.png' %}" alt="" width="300px">
+                        </div>
+
+                        <div class="satisfaction">
+                            <h3>Real Time Access to Banking Services</h3>
+                            <p>Delivering real-time access to banking services empowers customers to manage their finances instantly and effortlessly. By providing immediate transactions, up-to-date account information, and seamless digital interactions, banks can enhance convenience, build trust, and ensure a superior customer experience. Quick, reliable access transforms everyday banking into a satisfying and stress-free experience.</p>
+                            
+
+                            <img src="{% static '/media/joyful-man-home-happily-shaking-fists-ecstatic.jpg' %}" alt="" width="330px">
                         </div>
                     </div>
 
 
-                    <div class="aboutfooter">
-                        <div class="container my-5">
-                            <!-- Eligibility Section -->
-                            <div class="firstflex">
-                                <div class="eligib">
-                                    <h4>Eligibility Criteria</h4>
-                                <ul>
-                                  <li>Must be 18 years or older</li>
-                                  <li>Valid government-issued ID</li>
-                                  <li>Proof of income or employment</li>
-                                  <li>No Minimum Deposit Amount</li>
-                                </ul>
-                                 </div>
-                                
-                              
-                                <!-- Required Documents Section -->
-                                 <div class="eligib">
-                                    <h4>Documents Required</h4>
-                                <ul>
-                                  <li>Government-issued ID (e.g., Passport, Driver's License)</li>
-                                  <li>Proof of Address (e.g., utility bill, bank statement)</li>
-                                  <li>Proof of Income (e.g., pay slips, bank statement)</li>
-                                  <li>National Indentifiation Number (NIN) or Bank Verification Number (BVN)</li>
-                                </ul>
-                                 </div>
-                            </div> 
+
+
+
+
+
+                    <div class="firstflex">
+
+                        <div class="financial">
+                            <h3>Increasing Financial Inclusion, especially for users in Rural or underserved Areas</h3>
+                            <p>Expanding access to banking services ensures that everyone, including rural and underserved communities, can participate in the financial ecosystem. By leveraging digital platforms, mobile banking, and innovative solutions, people gain secure, convenient, and affordable access to savings, payments, and loans. This approach empowers communities, drives economic growth, and builds trust in inclusive financial services.</p>
                             
+                            <img src="{% static '/media/geralt-analysis-626881_1280.jpg' %}" alt="" width="330px">
                             
-                          
-                            <!-- Benefits Section -->
-                             <div class="secondflex">
-                                <div class="eligib">
-                                    <h4>Why Banking With Us?</h4>
-                                <ul>
-                                  <li>Competitive interest rates</li>
-                                  <li>No monthly maintenance fees</li>
-                                  <li>24/7 online access to your account</li>
-                                  <li>Free debit card included</li>
-                                </ul>
-                                 </div>
-                                
-                              
-                                <!-- FAQ Section -->
-                                 <div class="eligib">
-                                    <h4>Frequently Asked Questions</h4>
-    
-    
-                                <p><strong>Q:</strong> How long does the application process take?<br>
-                                   <strong>A:</strong> The Application takes five minutes to apply for a new account or a loan</p>
-                                <p><strong>Q:</strong> Can I apply without visiting a branch?<br>
-                                   <strong>A:</strong> Yes, you can complete the process fully online.</p>
-                                 </div>
-                             </div>
-                             
+                        </div>
+
+                        <div class="strength">
+                            <h3>Data security through the Integration of Modern Authentication and encryption methods.</h3>
+                            <p>Protecting sensitive financial information is essential in today’s digital banking environment. By integrating advanced authentication techniques and robust encryption methods, banks can safeguard customer data, prevent unauthorized access, and ensure secure transactions. This approach builds trust, enhances privacy, and provides a safe and reliable banking experience for every user.</p>
                             
-                          
-                            <!-- Support Section -->
-                             <div class="eligib">
-                                <h4>Need Help?</h4>
-                            <p>Call us at <strong>+234-9035993262</strong> or email us at 
-                               <a href="#">pelmijosh@gmail.com</a></p>
-                             </div>
-                            
-                          </div>
+                            <img src="{% static '/media/brianpenny-ai-generated-9123440_1280.jpg' %}" alt="" width="330">
+
+                        </div>
                     </div>
-    
+
+
+
+
+
+
+
                     
-                    
-                </main>
-                {% endblock body_content %}
+                        
+                        
+                </div>
                 
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-            </body>
-            </html>
-            
+
+
+        </div>
+
+        {% endblock body_content %}
+        {% comment %} <!--footer-->
+        <div class="footer">
+            <div class="endword">
+                <h3>© 2026 Digital Banking System</h3>
+                <h4>Empowering Financial Inclusion Through Secure Digital Banking Solutions.</h4>
+                <h5>Quick Links | Privacy Policy | Terms & Conditions | Contact Us | Accessibility</h5>
+                <h6>This system is developed for academic purposes only. All transactions are simulated.</h6>
+            </div>
+        </div>
+    </main> {% endcomment %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+<!-- Required Documents Section -->
+                             <!-- <div class="eligib">
+                                <h4>Documents Required</h4>
+                            <ul>
+                              <li>Government-issued ID (e.g., Passport, Driver's License)</li>
+                              <li>Proof of Address (e.g., utility bill, bank statement)</li>
+                              <li>Proof of Income (e.g., pay slips, bank statement)</li>
+                              <li>National Indentifiation Number (NIN) or Bank Verification Number (BVN)</li>
+                            </ul>
+                             </div>
+                        </div> 
+                        
+                        
+                      
+                        Benefits Section
+                         <div class="secondflex">
+                            <div class="eligib">
+                                <h4>Why Banking With Us?</h4>
+                            <ul>
+                              <li>Competitive interest rates</li>
+                              <li>No monthly maintenance fees</li>
+                              <li>24/7 online access to your account</li>
+                              <li>Free debit card included</li>
+                            </ul>
+                             </div>
+                             -->
+                          
+                            <!-- FAQ Section -->
+                             <!-- <div class="eligib">
+                                <h4>Frequently Asked Questions</h4>
+
+
+                            <p><strong>Q:</strong> How long does the application process take?<br>
+                               <strong>A:</strong> The Application takes five minutes to apply for a new account or a loan</p>
+                            <p><strong>Q:</strong> Can I apply without visiting a branch?<br>
+                               <strong>A:</strong> Yes, you can complete the process fully online.</p>
+                             </div>
+                         </div> -->
+                         
+                        <!-- <div><h3>Reducing delays in financial transactions</h3></div> -->
+
+                                <!-- <div><h3>Enhancing Customer Experience</h3></div> -->
+
+                                <!-- <div><h3>Satisfaction through Real Time Access to Banking Services</h3></div> -->
+
+                                <!-- <div><h3>Increasing Financial Inclusion, especially for users in Rural or underserved areas</h3> </div> -->
+
+                                <!-- <div>
+                                    <h3>Strengthening data security through the Integration of Modern Authentication and encryption methods.</h3>
+                                </div> -->
+<!-- Support Section
+                         <div class="eligib">
+                            <h4>Need Help?</h4>
+                        <p>Call us at <strong>+234-9035993262</strong> or email us at 
+                           <a href="mailto:support@example.com">supprt@digitalbanking.com</a></p>
+                         </div> -->
+
+                         <!-- <div class="sepa">
+                                    <div>
+                                        <div class="servicedelivery">
+                                            <h3>Improving Service Delivery<h3>
+                                    <div>
+                                        <div class="summary">
+                                            <p>Improving service delivery in digital banking ensures faster, secure, and more reliable financial services for customers. By leveraging modern technology and automation, digital banking platforms simplify transactions, reduce waiting time, and provide seamless access to banking services anytime, anywhere. This approach enhances customer satisfaction while ensuring convenience, efficiency, and trust.</p>
+                                        </div>
+                                        
+                                        <div>
+                                            <img src="/media/thedigitalartist-customer-service-1641724_1280.jpg" alt="" width="300px">
+                                        </div>
+
+                                </div>
+
+                                <div>
+                                    <div class="servicedelivery">
+                                            <h3>Improving Service Delivery<h3>
+                                    <div>
+                                        <div class="summary">
+                                            <p>Improving service delivery in digital banking ensures faster, secure, and more reliable financial services for customers. By leveraging modern technology and automation, digital banking platforms simplify transactions, reduce waiting time, and provide seamless access to banking services anytime, anywhere. This approach enhances customer satisfaction while ensuring convenience, efficiency, and trust.</p>
+                                        </div>
+                                        
+                                        <div>
+                                            <img src="/media/thedigitalartist-customer-service-1641724_1280.jpg" alt="" width="300px">
+                                        </div>
+                                </div> -->

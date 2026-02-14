@@ -2,7 +2,8 @@
 
 {% block title %}SignUp{% endblock title %}
 
-{% load bootstrap %}
+{% load crispy_forms_tags %}
+
 {% block body_content %}
 <style>
     body {
@@ -53,7 +54,7 @@
                     <h3 class="card-title text-center mb-8">SIGNUP</h3>
                     <form method="POST">
                     {% csrf_token %}
-                    {{ form|bootstrap_horizontal:"col-md-4,col-md-5" }}
+                     {{ form|crispy }}
                     <div class="form-group text-center">
                         <input class="bc-white mt-2 ml-2 longibutton" type="submit" value="Signup">
 

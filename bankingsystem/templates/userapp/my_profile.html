@@ -1,5 +1,5 @@
 {% extends 'common_page.html' %}
-
+{% load crispy_forms_tags %} 
 {% block title %} User Profile {% endblock title %}
 
 {% block body_content %}
@@ -224,7 +224,7 @@
 
                         
 
-                        {% if request.user.is_superuser or request.user.is_staff or request.user.is_active %}
+                        {% if request.user.is_superuser or request.user.is_staff %}
                             <hr>
                             <div class="field">
                                 <div class="control">

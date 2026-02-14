@@ -2,7 +2,8 @@
 
 {% block title %}New Account Form{% endblock title %}
 
-{% load bootstrap %}
+{% load crispy_forms_tags %}
+
 {% block body_content %}
 <style>
     body {
@@ -63,9 +64,9 @@
             <form method="POST" class="mt-4", enctype="multipart/form-data">
                 {% csrf_token %}
     
-                {% load bootstrap %}
+                
 
-                {{ form|bootstrap_horizontal:"col-lg-6" }}
+                {{ form|crispy }}
 
                 <div class="d-flex justify-content-center">
                     <input class="bc-white mt-2 ml-2 me-3 loginbutton" type="Submit" value="Submit">
