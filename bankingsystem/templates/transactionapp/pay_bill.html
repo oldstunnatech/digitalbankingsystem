@@ -54,27 +54,27 @@
                 {% csrf_token %}
                 <div id="form_fields_wrapper">
                     <div class="common-fields">
-                        {{ form.amount|bootstrap }}
-                        {{ form.phone_number|bootstrap }}
-                        {{ form.account_pin|bootstrap }}
-                        {{ form.account_number|bootstrap }}
+                        {{ form.amount|crispy }}
+                        {{ form.phone_number|crispy }}
+                        {{ form.account_pin|crispy }}
+                        {{ form.account_number|crispy }}
                     </div>
 
                     <div class="bill-section electricity-fields" style="display: none;">
-                        {{ form.electricity_type|bootstrap }}
-                        {{ form.meter_number|bootstrap }}
+                        {{ form.electricity_type|crispy }}
+                        {{ form.meter_number|crispy }}
                     </div>
 
                     <div class="bill-section cable-fields" style="display: none;">
-                        {{ form.cable_type|bootstrap }}
-                        {{ form.decoder_number|bootstrap }}
-                        {{ form.months_of_sub|bootstrap }}
-                        {{ form.request_type|bootstrap }}
+                        {{ form.cable_type|crispy }}
+                        {{ form.decoder_number|crispy }}
+                        {{ form.months_of_sub|crispy }}
+                        {{ form.request_type|crispy }}
                     </div>
 
                     <div class="bill-section water-fields" style="display: none;">
-                        {{ form.water_bill_type|bootstrap }}
-                        {{ form.water_service_number|bootstrap }}
+                        {{ form.water_bill_type|crispy }}
+                        {{ form.water_service_number|crispy }}
                     </div>
 
                     <div class="form-group mb-3">
