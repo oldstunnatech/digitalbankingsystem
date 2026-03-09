@@ -25,7 +25,7 @@ PROJECT_DIR =os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = "django-insecure-&_q!f(bp4s8$py9@a0mxcm+qi8&+33)*6j17&-7w%v56j-322z"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["digitalbankingsystem-c3nr.onrender.com", "localhost", "127.0.0.1"]
 
@@ -107,7 +107,7 @@ WSGI_APPLICATION = "bankingsystem.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'digitalbankingsystem_db',  # Your database name on Render
+        'NAME': 'digitalbankingsystem_db_444h',  # Your database name on Render
         'USER': 'digitalbankingsystem_db_444h_user',
         'PASSWORD': 'icWMDzGO9KDJVUvEBlnTYWJqJw4eh1IP',
         'HOST': 'dpg-d6nar8rh46gs73c6j040-a.oregon-postgres.render.com',
