@@ -25,7 +25,7 @@ PROJECT_DIR =os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = "django-insecure-&_q!f(bp4s8$py9@a0mxcm+qi8&+33)*6j17&-7w%v56j-322z"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["digitalbankingsystem-c3nr.onrender.com", "localhost", "127.0.0.1"]
 
